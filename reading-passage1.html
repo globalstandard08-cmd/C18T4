@@ -85,14 +85,17 @@
             color: #333;
         }
         .question-block {
-            margin-bottom: 16px;
-            scroll-margin-top: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 20px 25px;
+            margin-bottom: 20px;
+            background-color: #fdfdfd;
         }
         .question-header {
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 6px;
+            margin-bottom: 10px;
         }
         .flag-btn {
             font-size: 17px;
@@ -104,7 +107,7 @@
         .flag-btn.flagged {
             color: #fd7e14;
         }
-        .question-block p {
+        .question-block > p {
             font-weight: 500;
             margin-bottom: 8px;
             font-size: 14px;
@@ -120,17 +123,17 @@
             background: #f0f4f8;
             text-transform: uppercase;
         }
-        /* ===== NEW ROUND SELECTION STYLE — matches your Listening example ===== */
+        /* ========== EXACT LISTENING STYLE APPLIED HERE ========== */
         .q-group-title {
             font-weight: bold;
             font-size: 15px;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             color: #1f3a5f;
         }
         .option-row {
             display: flex;
             align-items: flex-start;
-            margin: 6px 0;
+            margin: 8px 0;
             padding: 6px 10px;
             border-radius: 4px;
             cursor: pointer;
@@ -156,7 +159,7 @@
             background-color: #fff;
         }
         .answer-display {
-            margin-top: 12px;
+            margin-top: 14px;
             padding: 10px 14px;
             background: #f0f4f8;
             border-radius: 4px;
@@ -477,7 +480,7 @@
                     <input type="text" class="summary-input" name="q9" placeholder="">.</p>
                 </div>
 
-                <!-- ========== Q10–11 — NEW ROUND STYLE ========== -->
+                <!-- ========== Q10–11 — EXACT LISTENING STYLE ========== -->
                 <h2>Questions 10–11</h2>
                 <div class="instruction">
                     Choose <strong>TWO</strong> letters, A–E.<br>
@@ -510,7 +513,7 @@
                     </div>
                 </div>
 
-                <!-- ========== Q12–13 — NEW ROUND STYLE ========== -->
+                <!-- ========== Q12–13 — EXACT LISTENING STYLE ========== -->
                 <h2>Questions 12–13</h2>
                 <div class="instruction">
                     Choose <strong>TWO</strong> letters, A–E.<br>
@@ -749,7 +752,6 @@
             });
         }
 
-        // Save answers for text input questions (Q1-Q9)
         function saveAnswers() {
             for (let q = 1; q <= 9; q++) {
                 const input = document.querySelector(`input[name="q${q}"]:not([type="checkbox"])`);
@@ -761,7 +763,6 @@
             updateStatus();
         }
 
-        // Mark/unmark helper
         function markAnswered(qNum) {
             document.querySelector(`.q-indicator[data-q="${qNum}"]`)?.classList.add('answered');
         }
@@ -769,7 +770,6 @@
             document.querySelector(`.q-indicator[data-q="${qNum}"]`)?.classList.remove('answered');
         }
 
-        // Load text answers Q1-Q9
         function loadTextAnswers() {
             for (let q = 1; q <= 9; q++) {
                 const saved = localStorage.getItem(`${READING_STORAGE_KEY}_q${q}`);
@@ -780,7 +780,6 @@
             }
         }
 
-        // TWO-SELECTION QUESTIONS LOGIC (Q10-11 and Q12-13)
         function initMultiSelect() {
             const multiGroups = [
                 { qs: ['10','11'] },
@@ -808,7 +807,6 @@
                         arr[1] ? markAnswered(group.qs[1]) : unmarkAnswered(group.qs[1]);
                     });
                 });
-                // Load saved answers for multi-select
                 const saved1 = localStorage.getItem(`${READING_STORAGE_KEY}_q${group.qs[0]}`);
                 const saved2 = localStorage.getItem(`${READING_STORAGE_KEY}_q${group.qs[1]}`);
                 if (saved1) { selected.add(saved1); document.getElementById('ans' + group.qs[0]).textContent = saved1; markAnswered(group.qs[0]); }
