@@ -110,13 +110,6 @@
             font-size: 14px;
             line-height: 1.6;
         }
-        .options label {
-            display: block;
-            margin-left: 15px;
-            margin-bottom: 5px;
-            font-size: 14px;
-            cursor: pointer;
-        }
         .answer-input {
             width: 100%;
             max-width: 220px;
@@ -127,11 +120,61 @@
             background: #f0f4f8;
             text-transform: uppercase;
         }
-        .two-col-options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4px 8px;
-            margin-left: 15px;
+        /* ===== NEW ROUND SELECTION STYLE — matches your Listening example ===== */
+        .q-group-title {
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 12px;
+            color: #1f3a5f;
+        }
+        .option-row {
+            display: flex;
+            align-items: flex-start;
+            margin: 6px 0;
+            padding: 6px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        .option-row:hover {
+            background-color: #eef2f7;
+        }
+        .radio-circle {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #9ca3af;
+            border-radius: 50%;
+            margin-right: 12px;
+            flex-shrink: 0;
+            position: relative;
+            background: white;
+            transition: all 0.15s;
+        }
+        .option-row.selected .radio-circle {
+            border-color: #1f3a5f;
+            border-width: 6px;
+            background-color: #fff;
+        }
+        .answer-display {
+            margin-top: 12px;
+            padding: 10px 14px;
+            background: #f0f4f8;
+            border-radius: 4px;
+            font-weight: 500;
+            color: #1f3a5f;
+            min-height: 40px;
+            font-size: 15px;
+        }
+        .answer-display span {
+            display: inline-block;
+            background: #1f3a5f;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 4px;
+            margin: 0 4px;
+            min-width: 34px;
+            text-align: center;
+            font-weight: bold;
         }
         .context-menu {
             position: absolute;
@@ -307,12 +350,6 @@
             margin-bottom: 14px;
             font-size: 16px;
         }
-        .summary-row {
-            display: flex;
-            align-items: center;
-            margin: 8px 0;
-            flex-wrap: wrap;
-        }
         .summary-q {
             min-width: 28px;
             font-weight: bold;
@@ -440,43 +477,69 @@
                     <input type="text" class="summary-input" name="q9" placeholder="">.</p>
                 </div>
 
+                <!-- ========== Q10–11 — NEW ROUND STYLE ========== -->
                 <h2>Questions 10–11</h2>
                 <div class="instruction">
                     Choose <strong>TWO</strong> letters, A–E.<br>
                     Which <strong>TWO</strong> advantages of using newer buildings for green roofs are mentioned in Paragraph C?
                 </div>
-
-                <div class="question-block" id="q10">
-                    <div class="question-header">
-                        <span class="flag-btn" onclick="toggleFlag(10)" id="flag10">🚩</span>
-                        <p><strong>10–11.</strong> Select TWO answers:</p>
+                <div class="question-block">
+                    <div class="q-group-title">Select TWO answers</div>
+                    <div class="option-row multi-2" data-q1="10" data-q2="11" data-val="A">
+                        <div class="radio-circle"></div>
+                        <span><strong>A</strong> a longer growing season for edible produce</span>
                     </div>
-                    <div class="two-col-options">
-                        <label><input type="checkbox" name="q10" value="A"> A — a longer growing season for edible produce</label>
-                        <label><input type="checkbox" name="q10" value="B"> B — more economical use of water</label>
-                        <label><input type="checkbox" name="q10" value="C"> C — greater water-storage capacity</label>
-                        <label><input type="checkbox" name="q10" value="D"> D — ability to cultivate more plant types</label>
-                        <label><input type="checkbox" name="q10" value="E"> E — a large surface area for growing plants</label>
+                    <div class="option-row multi-2" data-q1="10" data-q2="11" data-val="B">
+                        <div class="radio-circle"></div>
+                        <span><strong>B</strong> more economical use of water</span>
+                    </div>
+                    <div class="option-row multi-2" data-q1="10" data-q2="11" data-val="C">
+                        <div class="radio-circle"></div>
+                        <span><strong>C</strong> greater water-storage capacity</span>
+                    </div>
+                    <div class="option-row multi-2" data-q1="10" data-q2="11" data-val="D">
+                        <div class="radio-circle"></div>
+                        <span><strong>D</strong> ability to cultivate more plant types</span>
+                    </div>
+                    <div class="option-row multi-2" data-q1="10" data-q2="11" data-val="E">
+                        <div class="radio-circle"></div>
+                        <span><strong>E</strong> a larger surface area for growing plants</span>
+                    </div>
+                    <div class="answer-display">
+                        Answers: <span id="ans10"></span> <span id="ans11"></span>
                     </div>
                 </div>
 
+                <!-- ========== Q12–13 — NEW ROUND STYLE ========== -->
                 <h2>Questions 12–13</h2>
                 <div class="instruction">
                     Choose <strong>TWO</strong> letters, A–E.<br>
                     Which <strong>TWO</strong> aims of new variations on the concept of green roofs are mentioned in Paragraph E?
                 </div>
-
-                <div class="question-block" id="q12">
-                    <div class="question-header">
-                        <span class="flag-btn" onclick="toggleFlag(12)" id="flag12">🚩</span>
-                        <p><strong>12–13.</strong> Select TWO answers:</p>
+                <div class="question-block">
+                    <div class="q-group-title">Select TWO answers</div>
+                    <div class="option-row multi-2" data-q1="12" data-q2="13" data-val="A">
+                        <div class="radio-circle"></div>
+                        <span><strong>A</strong> to provide habitats for a wide range of species</span>
                     </div>
-                    <div class="two-col-options">
-                        <label><input type="checkbox" name="q12" value="A"> A — to provide habitats for a wide range of species</label>
-                        <label><input type="checkbox" name="q12" value="B"> B — to grow plants successfully even in the wettest climates</label>
-                        <label><input type="checkbox" name="q12" value="C"> C — to regulate the temperature of the immediate environment</label>
-                        <label><input type="checkbox" name="q12" value="D"> D — to generate power from a sustainable source</label>
-                        <label><input type="checkbox" name="q12" value="E"> E — to collect water to supply other buildings</label>
+                    <div class="option-row multi-2" data-q1="12" data-q2="13" data-val="B">
+                        <div class="radio-circle"></div>
+                        <span><strong>B</strong> to grow plants successfully even in the wettest climates</span>
+                    </div>
+                    <div class="option-row multi-2" data-q1="12" data-q2="13" data-val="C">
+                        <div class="radio-circle"></div>
+                        <span><strong>C</strong> to regulate the temperature of the immediate environment</span>
+                    </div>
+                    <div class="option-row multi-2" data-q1="12" data-q2="13" data-val="D">
+                        <div class="radio-circle"></div>
+                        <span><strong>D</strong> to generate power from a sustainable source</span>
+                    </div>
+                    <div class="option-row multi-2" data-q1="12" data-q2="13" data-val="E">
+                        <div class="radio-circle"></div>
+                        <span><strong>E</strong> to collect water to supply other buildings</span>
+                    </div>
+                    <div class="answer-display">
+                        Answers: <span id="ans12"></span> <span id="ans13"></span>
                     </div>
                 </div>
             </div>
@@ -546,7 +609,7 @@
                 const parent = container.nodeType === Node.TEXT_NODE ? container.parentElement : container;
                 const inPassage = document.getElementById('passageArea').contains(parent);
                 const inQuestions = document.getElementById('questionsArea').contains(parent);
-                const inInput = parent.closest('input, textarea, button, .note-close, label input') !== null;
+                const inInput = parent.closest('input, textarea, button, .note-close, label input, .option-row') !== null;
                 return (inPassage || inQuestions) && !inInput;
             } catch {
                 return false;
@@ -686,37 +749,76 @@
             });
         }
 
+        // Save answers for text input questions (Q1-Q9)
         function saveAnswers() {
-            for (let q = 1; q <= 13; q++) {
-                const textInput = document.querySelector(`input[name="q${q}"]:not([type="checkbox"])`);
-                if (textInput && textInput.value !== undefined) {
-                    let val = textInput.value.trim().toUpperCase().replace(/[^A-Z]/g, '');
+            for (let q = 1; q <= 9; q++) {
+                const input = document.querySelector(`input[name="q${q}"]:not([type="checkbox"])`);
+                if (input) {
+                    let val = input.value.trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
                     localStorage.setItem(`${READING_STORAGE_KEY}_q${q}`, val);
-                }
-                const checkboxes = document.querySelectorAll(`input[name="q${q}"]:checked`);
-                if (checkboxes.length > 0) {
-                    let vals = Array.from(checkboxes).map(c => c.value).sort().join('');
-                    localStorage.setItem(`${READING_STORAGE_KEY}_q${q}`, vals);
                 }
             }
             updateStatus();
         }
 
-        function loadAnswers() {
-            for (let q = 1; q <= 13; q++) {
-                const savedVal = localStorage.getItem(`${READING_STORAGE_KEY}_q${q}`);
-                if (!savedVal) continue;
-                const checkboxes = document.querySelectorAll(`input[name="q${q}"]`);
-                if (checkboxes.length > 0) {
-                    checkboxes.forEach(c => {
-                        c.checked = savedVal.indexOf(c.value) !== -1;
-                    });
-                } else {
+        // Mark/unmark helper
+        function markAnswered(qNum) {
+            document.querySelector(`.q-indicator[data-q="${qNum}"]`)?.classList.add('answered');
+        }
+        function unmarkAnswered(qNum) {
+            document.querySelector(`.q-indicator[data-q="${qNum}"]`)?.classList.remove('answered');
+        }
+
+        // Load text answers Q1-Q9
+        function loadTextAnswers() {
+            for (let q = 1; q <= 9; q++) {
+                const saved = localStorage.getItem(`${READING_STORAGE_KEY}_q${q}`);
+                if (saved) {
                     const input = document.querySelector(`input[name="q${q}"]:not([type="checkbox"])`);
-                    if (input) input.value = savedVal;
+                    if (input) input.value = saved;
                 }
             }
-            updateStatus();
+        }
+
+        // TWO-SELECTION QUESTIONS LOGIC (Q10-11 and Q12-13)
+        function initMultiSelect() {
+            const multiGroups = [
+                { qs: ['10','11'] },
+                { qs: ['12','13'] }
+            ];
+            multiGroups.forEach(group => {
+                const selected = new Set();
+                document.querySelectorAll(`.option-row.multi-2[data-q1="${group.qs[0]}"]`).forEach(row => {
+                    row.addEventListener('click', function() {
+                        const val = this.dataset.val;
+                        if (this.classList.contains('selected')) {
+                            this.classList.remove('selected');
+                            selected.delete(val);
+                        } else {
+                            if (selected.size >= 2) return;
+                            this.classList.add('selected');
+                            selected.add(val);
+                        }
+                        let arr = Array.from(selected).sort();
+                        localStorage.setItem(`${READING_STORAGE_KEY}_q${group.qs[0]}`, arr[0] || '');
+                        localStorage.setItem(`${READING_STORAGE_KEY}_q${group.qs[1]}`, arr[1] || '');
+                        document.getElementById('ans' + group.qs[0]).textContent = arr[0] || '';
+                        document.getElementById('ans' + group.qs[1]).textContent = arr[1] || '';
+                        arr[0] ? markAnswered(group.qs[0]) : unmarkAnswered(group.qs[0]);
+                        arr[1] ? markAnswered(group.qs[1]) : unmarkAnswered(group.qs[1]);
+                    });
+                });
+                // Load saved answers for multi-select
+                const saved1 = localStorage.getItem(`${READING_STORAGE_KEY}_q${group.qs[0]}`);
+                const saved2 = localStorage.getItem(`${READING_STORAGE_KEY}_q${group.qs[1]}`);
+                if (saved1) { selected.add(saved1); document.getElementById('ans' + group.qs[0]).textContent = saved1; markAnswered(group.qs[0]); }
+                if (saved2) { selected.add(saved2); document.getElementById('ans' + group.qs[1]).textContent = saved2; markAnswered(group.qs[1]); }
+                if (saved1 || saved2) {
+                    document.querySelectorAll(`.option-row.multi-2[data-q1="${group.qs[0]}"]`).forEach(row => {
+                        if (selected.has(row.dataset.val)) row.classList.add('selected');
+                    });
+                }
+            });
         }
 
         function updateStatus() {
@@ -740,7 +842,8 @@
         function clearAllAnswers() {
             if (!confirm('⚠️ This will clear ALL answers, flags, highlights and notes for this passage. Continue?')) return;
             document.querySelectorAll('.answer-input, .summary-input').forEach(i => i.value = '');
-            document.querySelectorAll('input[type="checkbox"]').forEach(c => c.checked = false);
+            document.querySelectorAll('.option-row').forEach(r => r.classList.remove('selected'));
+            document.querySelectorAll('.answer-display span').forEach(s => s.textContent = '');
             document.querySelectorAll('.flag-btn').forEach(f => f.classList.remove('flagged'));
             document.querySelectorAll('.highlight').forEach(s => {
                 const p = s.parentNode;
@@ -766,15 +869,11 @@
                 if (e.target.classList.contains('note-textarea')) saveNotes();
             }
         });
-        document.addEventListener('change', function(e) {
-            if (e.target.name?.startsWith('q') && e.target.type === 'checkbox') {
-                saveAnswers();
-            }
-        });
 
         window.onload = function() {
             initQuestionNav();
-            loadAnswers();
+            loadTextAnswers();
+            initMultiSelect();
             loadHighlights();
             loadNotes();
         };
