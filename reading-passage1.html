@@ -85,17 +85,14 @@
             color: #333;
         }
         .question-block {
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            padding: 20px 25px;
-            margin-bottom: 20px;
-            background-color: #fdfdfd;
+            margin-bottom: 16px;
+            scroll-margin-top: 15px;
         }
         .question-header {
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
         }
         .flag-btn {
             font-size: 17px;
@@ -107,7 +104,7 @@
         .flag-btn.flagged {
             color: #fd7e14;
         }
-        .question-block > p {
+        .question-block p {
             font-weight: 500;
             margin-bottom: 8px;
             font-size: 14px;
@@ -123,43 +120,47 @@
             background: #f0f4f8;
             text-transform: uppercase;
         }
-        /* ========== EXACT LISTENING STYLE APPLIED HERE ========== */
-        .q-group-title {
-            font-weight: bold;
-            font-size: 15px;
-            margin-bottom: 15px;
-            color: #1f3a5f;
-        }
+
+        /* ========== TICK BOX STYLE — CLEAN & SIMPLE ========== */
         .option-row {
             display: flex;
             align-items: flex-start;
-            margin: 8px 0;
-            padding: 6px 10px;
-            border-radius: 4px;
+            margin: 6px 0;
+            padding: 6px 0;
             cursor: pointer;
             transition: background 0.15s;
         }
         .option-row:hover {
-            background-color: #eef2f7;
+            background-color: #f5f7fa;
         }
-        .radio-circle {
-            width: 22px;
-            height: 22px;
-            border: 2px solid #9ca3af;
-            border-radius: 50%;
+        .tick-box {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #666;
+            border-radius: 3px;
             margin-right: 12px;
             flex-shrink: 0;
-            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: transparent;
             background: white;
             transition: all 0.15s;
         }
-        .option-row.selected .radio-circle {
+        .option-row.selected .tick-box {
             border-color: #1f3a5f;
-            border-width: 6px;
-            background-color: #fff;
+            background-color: #1f3a5f;
+            color: white;
+        }
+        .option-letter {
+            font-weight: bold;
+            min-width: 20px;
+            display: inline-block;
         }
         .answer-display {
-            margin-top: 14px;
+            margin-top: 12px;
             padding: 10px 14px;
             background: #f0f4f8;
             border-radius: 4px;
@@ -179,6 +180,7 @@
             text-align: center;
             font-weight: bold;
         }
+
         .context-menu {
             position: absolute;
             background: #ffffff;
@@ -480,66 +482,74 @@
                     <input type="text" class="summary-input" name="q9" placeholder="">.</p>
                 </div>
 
-                <!-- ========== Q10–11 — EXACT LISTENING STYLE ========== -->
+                <!-- ========== Q10–11 — TICK BOX STYLE ========== -->
                 <h2>Questions 10–11</h2>
                 <div class="instruction">
                     Choose <strong>TWO</strong> letters, A–E.<br>
                     Which <strong>TWO</strong> advantages of using newer buildings for green roofs are mentioned in Paragraph C?
                 </div>
                 <div class="question-block">
-                    <div class="q-group-title">Select TWO answers</div>
                     <div class="option-row multi-2" data-q1="10" data-q2="11" data-val="A">
-                        <div class="radio-circle"></div>
-                        <span><strong>A</strong> a longer growing season for edible produce</span>
+                        <div class="tick-box">✓</div>
+                        <span class="option-letter">A.</span>
+                        <span>a longer growing season for edible produce</span>
                     </div>
                     <div class="option-row multi-2" data-q1="10" data-q2="11" data-val="B">
-                        <div class="radio-circle"></div>
-                        <span><strong>B</strong> more economical use of water</span>
+                        <div class="tick-box">✓</div>
+                        <span class="option-letter">B.</span>
+                        <span>more economical use of water</span>
                     </div>
                     <div class="option-row multi-2" data-q1="10" data-q2="11" data-val="C">
-                        <div class="radio-circle"></div>
-                        <span><strong>C</strong> greater water-storage capacity</span>
+                        <div class="tick-box">✓</div>
+                        <span class="option-letter">C.</span>
+                        <span>greater water-storage capacity</span>
                     </div>
                     <div class="option-row multi-2" data-q1="10" data-q2="11" data-val="D">
-                        <div class="radio-circle"></div>
-                        <span><strong>D</strong> ability to cultivate more plant types</span>
+                        <div class="tick-box">✓</div>
+                        <span class="option-letter">D.</span>
+                        <span>ability to cultivate more plant types</span>
                     </div>
                     <div class="option-row multi-2" data-q1="10" data-q2="11" data-val="E">
-                        <div class="radio-circle"></div>
-                        <span><strong>E</strong> a larger surface area for growing plants</span>
+                        <div class="tick-box">✓</div>
+                        <span class="option-letter">E.</span>
+                        <span>a larger surface area for growing plants</span>
                     </div>
                     <div class="answer-display">
                         Answers: <span id="ans10"></span> <span id="ans11"></span>
                     </div>
                 </div>
 
-                <!-- ========== Q12–13 — EXACT LISTENING STYLE ========== -->
+                <!-- ========== Q12–13 — TICK BOX STYLE ========== -->
                 <h2>Questions 12–13</h2>
                 <div class="instruction">
                     Choose <strong>TWO</strong> letters, A–E.<br>
                     Which <strong>TWO</strong> aims of new variations on the concept of green roofs are mentioned in Paragraph E?
                 </div>
                 <div class="question-block">
-                    <div class="q-group-title">Select TWO answers</div>
                     <div class="option-row multi-2" data-q1="12" data-q2="13" data-val="A">
-                        <div class="radio-circle"></div>
-                        <span><strong>A</strong> to provide habitats for a wide range of species</span>
+                        <div class="tick-box">✓</div>
+                        <span class="option-letter">A.</span>
+                        <span>to provide habitats for a wide range of species</span>
                     </div>
                     <div class="option-row multi-2" data-q1="12" data-q2="13" data-val="B">
-                        <div class="radio-circle"></div>
-                        <span><strong>B</strong> to grow plants successfully even in the wettest climates</span>
+                        <div class="tick-box">✓</div>
+                        <span class="option-letter">B.</span>
+                        <span>to grow plants successfully even in the wettest climates</span>
                     </div>
                     <div class="option-row multi-2" data-q1="12" data-q2="13" data-val="C">
-                        <div class="radio-circle"></div>
-                        <span><strong>C</strong> to regulate the temperature of the immediate environment</span>
+                        <div class="tick-box">✓</div>
+                        <span class="option-letter">C.</span>
+                        <span>to regulate the temperature of the immediate environment</span>
                     </div>
                     <div class="option-row multi-2" data-q1="12" data-q2="13" data-val="D">
-                        <div class="radio-circle"></div>
-                        <span><strong>D</strong> to generate power from a sustainable source</span>
+                        <div class="tick-box">✓</div>
+                        <span class="option-letter">D.</span>
+                        <span>to generate power from a sustainable source</span>
                     </div>
                     <div class="option-row multi-2" data-q1="12" data-q2="13" data-val="E">
-                        <div class="radio-circle"></div>
-                        <span><strong>E</strong> to collect water to supply other buildings</span>
+                        <div class="tick-box">✓</div>
+                        <span class="option-letter">E.</span>
+                        <span>to collect water to supply other buildings</span>
                     </div>
                     <div class="answer-display">
                         Answers: <span id="ans12"></span> <span id="ans13"></span>
