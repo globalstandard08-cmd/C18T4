@@ -87,67 +87,92 @@
             margin-bottom: 30px;
             background-color: #fdfdfd;
         }
-        .question-line {
-            margin-bottom: 18px;
+
+        /* ===== MULTIPLE CHOICE — REAL EXAM STYLE CIRCLE BUTTONS ===== */
+        .q-group {
+            margin-bottom: 24px;
+        }
+        .q-label {
+            font-weight: bold;
+            min-width: 40px;
+            color: #1f3a5f;
+            display: inline-block;
+        }
+        .option-row {
+            margin: 6px 0 6px 40px;
             display: flex;
             align-items: center;
             gap: 10px;
-            flex-wrap: wrap;
-            font-size: 16px;
+            cursor: pointer;
         }
-        .q-number {
-            font-weight: bold;
-            min-width: 35px;
-            color: #1f3a5f;
-        }
-        .letter-option {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin: 6px 0;
-            padding-left: 45px;
-        }
-        .option-label {
+        .option-letter {
             font-weight: bold;
             min-width: 25px;
             color: #1f3a5f;
         }
-        .input-letter {
-            width: 60px;
-            padding: 4px 8px;
+        .circle-btn {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #666;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+            background: white;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+        .circle-btn.selected {
+            border-color: #1f3a5f;
+            background-color: #1f3a5f;
+            box-shadow: inset 0 0 0 4px white;
+        }
+
+        /* ===== MATCHING — REAL EXAM STYLE ANSWER BOX ===== */
+        .matching-box {
             border: 1px solid #ccc;
+            padding: 15px 20px;
+            margin: 15px 0;
+            background-color: #f8fbfe;
             border-radius: 4px;
-            font-size: 16px;
+        }
+        .matching-row {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        .matching-row:last-child {
+            border-bottom: none;
+        }
+        .matching-q {
+            font-weight: bold;
+            min-width: 40px;
+            color: #1f3a5f;
+        }
+        .answer-box {
+            width: 50px;
+            height: 36px;
+            border: 1px solid #333;
+            border-radius: 3px;
             text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-right: 15px;
             background: white;
         }
-        .input-letter:focus {
+        .answer-box:focus {
             outline: none;
             border-color: #1f3a5f;
-            box-shadow: 0 0 3px rgba(31, 58, 95, 0.3);
+            box-shadow: 0 0 0 2px rgba(31,58,95,0.2);
         }
-        .input-letter.filled {
+        .answer-box.filled {
             background-color: #e6f0ff;
             border-color: #1f3a5f;
         }
-        .match-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-        .match-table th, .match-table td {
-            border: 1px solid #ccc;
-            padding: 12px 15px;
-            font-size: 15px;
-        }
-        .match-table th {
-            background-color: #f0f4f8;
-            color: #1f3a5f;
-            font-weight: bold;
-        }
-        .box-column {
-            background-color: #f8fbfe;
-        }
+
         /* Highlight & Menu */
         .user-highlight {
             background-color: #ffd700;
@@ -240,6 +265,7 @@
             border: 1px solid #d1d5db;
             background: #e5e7eb;
             color: #333;
+            font-size: 13px;
         }
         .q-indicator.current {
             background: #d9dce1;
@@ -339,138 +365,145 @@
         <div class="content" id="highlightArea">
             <h2>Section 2 – Questions 11–20</h2>
 
+            <!-- ========== QUESTIONS 11–14: MULTIPLE CHOICE ========== -->
             <div class="instruction">
                 <strong>Questions 11–14</strong><br>
                 Choose the correct letter, <strong>A, B or C</strong>.
             </div>
 
             <div class="notes-block">
-                <div class="question-line">
-                    <span class="q-number">11</span>
+                <div class="q-group" data-q="11">
+                    <span class="q-label">11</span>
                     <span>The museum building was originally</span>
-                    <input type="text" class="input-letter" id="q11" placeholder="A/B/C">
-                </div>
-                <div class="letter-option">
-                    <span class="option-label">A</span>
-                    <span>a factory.</span>
-                </div>
-                <div class="letter-option">
-                    <span class="option-label">B</span>
-                    <span>a private home.</span>
-                </div>
-                <div class="letter-option">
-                    <span class="option-label">C</span>
-                    <span>a hall of residence.</span>
+                    <div class="option-row" data-value="A">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">A</span>
+                        <span>a factory.</span>
+                    </div>
+                    <div class="option-row" data-value="B">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">B</span>
+                        <span>a private home.</span>
+                    </div>
+                    <div class="option-row" data-value="C">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">C</span>
+                        <span>a hall of residence.</span>
+                    </div>
                 </div>
 
-                <div class="question-line" style="margin-top:22px;">
-                    <span class="q-number">12</span>
+                <div class="q-group" data-q="12">
+                    <span class="q-label">12</span>
                     <span>The university uses part of the museum building as</span>
-                    <input type="text" class="input-letter" id="q12" placeholder="A/B/C">
-                </div>
-                <div class="letter-option">
-                    <span class="option-label">A</span>
-                    <span>teaching rooms.</span>
-                </div>
-                <div class="letter-option">
-                    <span class="option-label">B</span>
-                    <span>a research library.</span>
-                </div>
-                <div class="letter-option">
-                    <span class="option-label">C</span>
-                    <span>administration offices.</span>
+                    <div class="option-row" data-value="A">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">A</span>
+                        <span>teaching rooms.</span>
+                    </div>
+                    <div class="option-row" data-value="B">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">B</span>
+                        <span>a research library.</span>
+                    </div>
+                    <div class="option-row" data-value="C">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">C</span>
+                        <span>administration offices.</span>
+                    </div>
                 </div>
 
-                <div class="question-line" style="margin-top:22px;">
-                    <span class="q-number">13</span>
+                <div class="q-group" data-q="13">
+                    <span class="q-label">13</span>
                     <span>What does the guide say about the entrance fee?</span>
-                    <input type="text" class="input-letter" id="q13" placeholder="A/B/C">
-                </div>
-                <div class="letter-option">
-                    <span class="option-label">A</span>
-                    <span>Visitors decide whether or not they wish to pay.</span>
-                </div>
-                <div class="letter-option">
-                    <span class="option-label">B</span>
-                    <span>Only children and students receive a discount.</span>
-                </div>
-                <div class="letter-option">
-                    <span class="option-label">C</span>
-                    <span>The museum charges extra for special exhibitions.</span>
+                    <div class="option-row" data-value="A">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">A</span>
+                        <span>Visitors decide whether or not they wish to pay.</span>
+                    </div>
+                    <div class="option-row" data-value="B">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">B</span>
+                        <span>Only children and students receive a discount.</span>
+                    </div>
+                    <div class="option-row" data-value="C">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">C</span>
+                        <span>The museum charges extra for special exhibitions.</span>
+                    </div>
                 </div>
 
-                <div class="question-line" style="margin-top:22px;">
-                    <span class="q-number">14</span>
+                <div class="q-group" data-q="14">
+                    <span class="q-label">14</span>
                     <span>What are visitors advised to leave in the cloakroom?</span>
-                    <input type="text" class="input-letter" id="q14" placeholder="A/B/C">
-                </div>
-                <div class="letter-option">
-                    <span class="option-label">A</span>
-                    <span>cameras</span>
-                </div>
-                <div class="letter-option">
-                    <span class="option-label">B</span>
-                    <span>coats</span>
-                </div>
-                <div class="letter-option">
-                    <span class="option-label">C</span>
-                    <span>bags</span>
+                    <div class="option-row" data-value="A">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">A</span>
+                        <span>cameras</span>
+                    </div>
+                    <div class="option-row" data-value="B">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">B</span>
+                        <span>coats</span>
+                    </div>
+                    <div class="option-row" data-value="C">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">C</span>
+                        <span>bags</span>
+                    </div>
                 </div>
             </div>
 
+            <!-- ========== QUESTIONS 15–20: MATCHING ========== -->
             <div class="instruction">
                 <strong>Questions 15–20</strong><br>
                 What information does the speaker give about each of the following areas of the museum?<br>
                 Choose <strong>SIX</strong> answers from the box and write the correct letter, <strong>A–H</strong>, next to Questions 15–20.
             </div>
 
-            <table class="match-table">
-                <thead>
-                    <tr>
-                        <th>Areas of museum</th>
-                        <th class="box-column">Information</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="box-column">
-                        <td></td>
-                        <td>
-                            <strong>A</strong> Parents must supervise their children.<br>
-                            <strong>B</strong> There are new things to see.<br>
-                            <strong>C</strong> It is closed today.<br>
-                            <strong>D</strong> This is only for school groups.<br>
-                            <strong>E</strong> There is a quiz for visitors.<br>
-                            <strong>F</strong> It features something created by students.<br>
-                            <strong>G</strong> An expert is here today.<br>
-                            <strong>H</strong> There is a one-way system.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>15</strong> Four Seasons</td>
-                        <td><input type="text" class="input-letter" id="q15" placeholder="A–H"></td>
-                    </tr>
-                    <tr>
-                        <td><strong>16</strong> Farmhouse Kitchen</td>
-                        <td><input type="text" class="input-letter" id="q16" placeholder="A–H"></td>
-                    </tr>
-                    <tr>
-                        <td><strong>17</strong> A Year on the Farm</td>
-                        <td><input type="text" class="input-letter" id="q17" placeholder="A–H"></td>
-                    </tr>
-                    <tr>
-                        <td><strong>18</strong> Wagon Walk</td>
-                        <td><input type="text" class="input-letter" id="q18" placeholder="A–H"></td>
-                    </tr>
-                    <tr>
-                        <td><strong>19</strong> Bees are Magic</td>
-                        <td><input type="text" class="input-letter" id="q19" placeholder="A–H"></td>
-                    </tr>
-                    <tr>
-                        <td><strong>20</strong> The Pond</td>
-                        <td><input type="text" class="input-letter" id="q20" placeholder="A–H"></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="matching-box">
+                <strong>Information</strong><br>
+                <strong>A</strong> Parents must supervise their children.<br>
+                <strong>B</strong> There are new things to see.<br>
+                <strong>C</strong> It is closed today.<br>
+                <strong>D</strong> This is only for school groups.<br>
+                <strong>E</strong> There is a quiz for visitors.<br>
+                <strong>F</strong> It features something created by students.<br>
+                <strong>G</strong> An expert is here today.<br>
+                <strong>H</strong> There is a one-way system.
+            </div>
+
+            <div class="notes-block">
+                <div class="matching-row">
+                    <span class="matching-q">15</span>
+                    <input type="text" class="answer-box" id="q15" maxlength="1" placeholder="">
+                    <span>Four Seasons</span>
+                </div>
+                <div class="matching-row">
+                    <span class="matching-q">16</span>
+                    <input type="text" class="answer-box" id="q16" maxlength="1" placeholder="">
+                    <span>Farmhouse Kitchen</span>
+                </div>
+                <div class="matching-row">
+                    <span class="matching-q">17</span>
+                    <input type="text" class="answer-box" id="q17" maxlength="1" placeholder="">
+                    <span>A Year on the Farm</span>
+                </div>
+                <div class="matching-row">
+                    <span class="matching-q">18</span>
+                    <input type="text" class="answer-box" id="q18" maxlength="1" placeholder="">
+                    <span>Wagon Walk</span>
+                </div>
+                <div class="matching-row">
+                    <span class="matching-q">19</span>
+                    <input type="text" class="answer-box" id="q19" maxlength="1" placeholder="">
+                    <span>Bees are Magic</span>
+                </div>
+                <div class="matching-row">
+                    <span class="matching-q">20</span>
+                    <input type="text" class="answer-box" id="q20" maxlength="1" placeholder="">
+                    <span>The Pond</span>
+                </div>
+            </div>
 
             <!-- Status Bar -->
             <div class="question-status">
@@ -528,7 +561,7 @@
             <div class="nav-container">
                 <a href="listening-test4-part1.html" class="back-main-btn">← Part 1</a>
                 <div class="nav-buttons">
-                    <a href="listening-test4-part1.html" class="nav-btn" style="text-align:center;line-height:46px;">←</a>
+                    <a href="listening-test4-part1.html" class="nav-btn">←</a>
                     <a href="listening-test4-part3.html" class="nav-btn">→</a>
                 </div>
             </div>
@@ -538,16 +571,48 @@
     <script>
         const LISTENING_STORAGE_KEY = 'Listening_Test';
         document.addEventListener('DOMContentLoaded', function() {
-            for (let i = 11; i <= 20; i++) {
+
+            // ===== MULTIPLE CHOICE (Q11–14) — CIRCLE BUTTONS =====
+            document.querySelectorAll('.q-group').forEach(group => {
+                const qNum = parseInt(group.dataset.q);
+                const options = group.querySelectorAll('.option-row');
+
+                // Load saved answer
+                const saved = localStorage.getItem(LISTENING_STORAGE_KEY + '_q' + qNum);
+                if (saved) {
+                    options.forEach(opt => {
+                        if (opt.dataset.value === saved) {
+                            opt.querySelector('.circle-btn').classList.add('selected');
+                            markAnswered(qNum);
+                        }
+                    });
+                }
+
+                // Click to select
+                options.forEach(opt => {
+                    opt.addEventListener('click', () => {
+                        // Clear all in this group
+                        options.forEach(o => o.querySelector('.circle-btn').classList.remove('selected'));
+                        // Select this one
+                        opt.querySelector('.circle-btn').classList.add('selected');
+                        const val = opt.dataset.value;
+                        localStorage.setItem(LISTENING_STORAGE_KEY + '_q' + qNum, val);
+                        markAnswered(qNum);
+                    });
+                });
+            });
+
+            // ===== MATCHING (Q15–20) — WRITE LETTER IN BOX =====
+            for (let i = 15; i <= 20; i++) {
                 const field = document.getElementById('q' + i);
-                const savedValue = localStorage.getItem(LISTENING_STORAGE_KEY + '_q' + i);
-                if (savedValue) {
-                    field.value = savedValue;
+                const saved = localStorage.getItem(LISTENING_STORAGE_KEY + '_q' + i);
+                if (saved) {
+                    field.value = saved;
                     field.classList.add('filled');
                     markAnswered(i);
                 }
                 field.addEventListener('input', function() {
-                    const val = this.value.trim().toUpperCase();
+                    let val = this.value.trim().toUpperCase().replace(/[^A-H]/g, '');
                     this.value = val;
                     localStorage.setItem(LISTENING_STORAGE_KEY + '_q' + i, val);
                     if (val) {
@@ -560,12 +625,13 @@
                 });
             }
 
+            // --- Highlight & Sticky Notes ---
             const highlightArea = document.getElementById('highlightArea');
             const contextMenu = document.getElementById('contextMenu');
             let currentRange = null;
             let lastNoteId = 0;
 
-            highlightArea.addEventListener('contextmenu', function(e) {
+            highlightArea.addEventListener('contextmenu', e => {
                 const sel = window.getSelection();
                 if (!sel || sel.isCollapsed || !sel.toString().trim()) {
                     contextMenu.style.display = 'none';
@@ -621,14 +687,20 @@
                 currentRange = null;
             };
 
-            window.closeNote = function(id) {
-                document.getElementById(id)?.remove();
-            };
+            window.closeNote = id => document.getElementById(id)?.remove();
         });
 
         function clearAll() {
             if (!confirm("Clear ALL answers, highlights, and notes? This cannot be undone.")) return;
-            for (let i = 11; i <= 20; i++) {
+            // Clear Q11–14
+            document.querySelectorAll('.q-group').forEach((group, idx) => {
+                const qNum = 11 + idx;
+                localStorage.removeItem(LISTENING_STORAGE_KEY + '_q' + qNum);
+                group.querySelectorAll('.circle-btn').forEach(b => b.classList.remove('selected'));
+                unmarkAnswered(qNum);
+            });
+            // Clear Q15–20
+            for (let i = 15; i <= 20; i++) {
                 localStorage.removeItem(LISTENING_STORAGE_KEY + '_q' + i);
                 const field = document.getElementById('q' + i);
                 if (field) { field.value = ''; field.classList.remove('filled'); }
