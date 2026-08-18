@@ -129,7 +129,7 @@
             box-shadow: inset 0 0 0 4px white;
         }
 
-        /* ===== MULTIPLE SELECT (Q21-22) — CHECKBOX STYLE ===== */
+        /* ===== MULTIPLE SELECT (Q21-22) ===== */
         .multi-hint {
             color: #d97706;
             font-size: 14px;
@@ -137,18 +137,35 @@
             font-weight: 500;
         }
 
-        /* ===== MATCHING — ANSWER BOX ===== */
-        .matching-box {
+        /* ===== Q23-27: SIDE-BY-SIDE LAYOUT ===== */
+        .matching-container {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .matching-questions {
+            flex: 1 1 280px;
+        }
+        .matching-options {
+            flex: 1 1 300px;
             border: 1px solid #ccc;
-            padding: 15px 20px;
-            margin: 15px 0;
+            padding: 18px;
             background-color: #f8fbfe;
             border-radius: 4px;
+        }
+        .matching-options h4 {
+            color: #1f3a5f;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+        .matching-option {
+            margin: 6px 0;
+            font-size: 15px;
         }
         .matching-row {
             display: flex;
             align-items: center;
-            padding: 8px 0;
+            padding: 10px 0;
             border-bottom: 1px dashed #eee;
         }
         .matching-row:last-child {
@@ -373,7 +390,7 @@
         <div class="content" id="highlightArea">
             <h2>Section 3 – Questions 21–30</h2>
 
-            <!-- ========== QUESTIONS 21–22: CHOOSE TWO LETTERS ========== -->
+            <!-- ========== QUESTIONS 21–22: CHOOSE TWO ========== -->
             <div class="instruction">
                 <strong>Questions 21 and 22</strong><br>
                 Choose <strong>TWO</strong> letters, <strong>A–E</strong>.
@@ -412,53 +429,58 @@
                 </div>
             </div>
 
-            <!-- ========== QUESTIONS 23–27: MATCHING ========== -->
+            <!-- ========== QUESTIONS 23–27: SIDE-BY-SIDE LAYOUT ========== -->
             <div class="instruction">
                 <strong>Questions 23–27</strong><br>
                 Which comment do the students make about each of the following children in the video?<br>
                 Choose <strong>FIVE</strong> answers from the box and write the correct letter, <strong>A–G</strong>, next to Questions 23–27.
             </div>
 
-            <div class="matching-box">
-                <strong>Comments</strong><br>
-                <strong>A</strong> demonstrated independence<br>
-                <strong>B</strong> asked for teacher support<br>
-                <strong>C</strong> developed a competitive attitude<br>
-                <strong>D</strong> seemed to find the activity calming<br>
-                <strong>E</strong> seemed pleased with the results<br>
-                <strong>F</strong> seemed confused<br>
-                <strong>G</strong> seemed to find the activity easy
-            </div>
-
             <div class="notes-block">
-                <div class="matching-row">
-                    <span class="matching-q">23</span>
-                    <input type="text" class="answer-box" id="q23" maxlength="1" placeholder="">
-                    <span>Sid</span>
-                </div>
-                <div class="matching-row">
-                    <span class="matching-q">24</span>
-                    <input type="text" class="answer-box" id="q24" maxlength="1" placeholder="">
-                    <span>Jack</span>
-                </div>
-                <div class="matching-row">
-                    <span class="matching-q">25</span>
-                    <input type="text" class="answer-box" id="q25" maxlength="1" placeholder="">
-                    <span>Naomi</span>
-                </div>
-                <div class="matching-row">
-                    <span class="matching-q">26</span>
-                    <input type="text" class="answer-box" id="q26" maxlength="1" placeholder="">
-                    <span>Anya</span>
-                </div>
-                <div class="matching-row">
-                    <span class="matching-q">27</span>
-                    <input type="text" class="answer-box" id="q27" maxlength="1" placeholder="">
-                    <span>Zara</span>
+                <div class="matching-container">
+                    <!-- QUESTIONS ON LEFT -->
+                    <div class="matching-questions">
+                        <div class="matching-row">
+                            <span class="matching-q">23</span>
+                            <input type="text" class="answer-box" id="q23" maxlength="1" placeholder="">
+                            <span>Sid</span>
+                        </div>
+                        <div class="matching-row">
+                            <span class="matching-q">24</span>
+                            <input type="text" class="answer-box" id="q24" maxlength="1" placeholder="">
+                            <span>Jack</span>
+                        </div>
+                        <div class="matching-row">
+                            <span class="matching-q">25</span>
+                            <input type="text" class="answer-box" id="q25" maxlength="1" placeholder="">
+                            <span>Naomi</span>
+                        </div>
+                        <div class="matching-row">
+                            <span class="matching-q">26</span>
+                            <input type="text" class="answer-box" id="q26" maxlength="1" placeholder="">
+                            <span>Anya</span>
+                        </div>
+                        <div class="matching-row">
+                            <span class="matching-q">27</span>
+                            <input type="text" class="answer-box" id="q27" maxlength="1" placeholder="">
+                            <span>Zara</span>
+                        </div>
+                    </div>
+                    <!-- OPTIONS ON RIGHT -->
+                    <div class="matching-options">
+                        <h4>Comments</h4>
+                        <div class="matching-option"><strong>A</strong> demonstrated independence</div>
+                        <div class="matching-option"><strong>B</strong> asked for teacher support</div>
+                        <div class="matching-option"><strong>C</strong> developed a competitive attitude</div>
+                        <div class="matching-option"><strong>D</strong> seemed to find the activity calming</div>
+                        <div class="matching-option"><strong>E</strong> seemed pleased with the results</div>
+                        <div class="matching-option"><strong>F</strong> seemed confused</div>
+                        <div class="matching-option"><strong>G</strong> seemed to find the activity easy</div>
+                    </div>
                 </div>
             </div>
 
-            <!-- ========== QUESTIONS 28–30: MULTIPLE CHOICE A/B/C ========== -->
+            <!-- ========== QUESTIONS 28–30: MULTIPLE CHOICE ========== -->
             <div class="instruction">
                 <strong>Questions 28–30</strong><br>
                 Choose the correct letter, <strong>A, B or C</strong>.
@@ -593,11 +615,9 @@
         const LISTENING_STORAGE_KEY = 'Listening_Test';
         document.addEventListener('DOMContentLoaded', function() {
 
-            // ===== Q21-22: CHOOSE TWO (MULTIPLE SELECT) =====
+            // ===== Q21-22: CHOOSE TWO =====
             const q21_22_group = document.querySelector('[data-q="21-22"]');
             const q21_22_options = q21_22_group.querySelectorAll('.option-row');
-
-            // Load saved answers
             let saved21 = localStorage.getItem(LISTENING_STORAGE_KEY + '_q21') || '';
             let saved22 = localStorage.getItem(LISTENING_STORAGE_KEY + '_q22') || '';
             if (saved21) markOption(q21_22_options, saved21);
@@ -613,7 +633,6 @@
                 });
             }
 
-            // Click to toggle — allow UP TO 2 selections
             q21_22_options.forEach(opt => {
                 opt.addEventListener('click', () => {
                     const btn = opt.querySelector('.circle-btn');
@@ -626,12 +645,10 @@
                     });
 
                     if (btn.classList.contains('selected')) {
-                        // Deselect
                         btn.classList.remove('selected');
                         if (saved21 === val) { saved21 = ''; localStorage.removeItem(LISTENING_STORAGE_KEY + '_q21'); unmarkAnswered(21); }
                         else if (saved22 === val) { saved22 = ''; localStorage.removeItem(LISTENING_STORAGE_KEY + '_q22'); unmarkAnswered(22); }
                     } else {
-                        // Select — only if fewer than 2
                         if (selected.length < 2) {
                             btn.classList.add('selected');
                             if (!saved21) { saved21 = val; localStorage.setItem(LISTENING_STORAGE_KEY + '_q21', val); markAnswered(21); }
@@ -646,7 +663,7 @@
                 setupMatching(i);
             }
 
-            // ===== Q28-30: SINGLE CHOICE A/B/C =====
+            // ===== Q28-30: SINGLE CHOICE =====
             document.querySelectorAll('.q-group[data-q="28"], .q-group[data-q="29"], .q-group[data-q="30"]').forEach(group => {
                 const qNum = parseInt(group.dataset.q);
                 const options = group.querySelectorAll('.option-row');
@@ -761,19 +778,16 @@
 
         function clearAll() {
             if (!confirm("Clear ALL answers, highlights, and notes? This cannot be undone.")) return;
-            // Q21-22
             localStorage.removeItem(LISTENING_STORAGE_KEY + '_q21');
             localStorage.removeItem(LISTENING_STORAGE_KEY + '_q22');
             document.querySelectorAll('[data-q="21-22"] .circle-btn').forEach(b => b.classList.remove('selected'));
             unmarkAnswered(21); unmarkAnswered(22);
-            // Q23-27
             for (let i = 23; i <= 27; i++) {
                 localStorage.removeItem(LISTENING_STORAGE_KEY + '_q' + i);
                 const field = document.getElementById('q' + i);
                 if (field) { field.value = ''; field.classList.remove('filled'); }
                 unmarkAnswered(i);
             }
-            // Q28-30
             [28,29,30].forEach(q => {
                 localStorage.removeItem(LISTENING_STORAGE_KEY + '_q' + q);
                 document.querySelector(`[data-q="${q}"] .circle-btn`)?.classList.remove('selected');
