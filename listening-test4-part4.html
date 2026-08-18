@@ -14,7 +14,7 @@
         body {
             background-color: #f4f6f9;
             padding: 20px;
-            line-height: 1.7;
+            line-height: 1.8;
             position: relative;
             user-select: text;
         }
@@ -75,7 +75,7 @@
         .instruction {
             background-color: #f8fbfe;
             border-left: 4px solid #1f3a5f;
-            padding: 15px;
+            padding: 15px 20px;
             margin-bottom: 25px;
             border-radius: 4px;
             font-weight: 500;
@@ -90,40 +90,45 @@
         .notes-box h3 {
             text-align: center;
             color: #1f3a5f;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             font-size: 20px;
             text-decoration: underline;
         }
         .notes-section {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         .notes-section h4 {
             color: #1f3a5f;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             font-size: 16px;
             font-style: italic;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 4px;
         }
-        .answer-line {
+        .answer-row {
             display: flex;
             align-items: center;
-            margin: 8px 0;
-            padding-left: 10px;
+            flex-wrap: wrap;
+            margin: 10px 0;
+            padding-left: 8px;
         }
-        .q-label {
+        .q-number {
+            display: inline-block;
+            min-width: 36px;
             font-weight: bold;
-            min-width: 40px;
             color: #1f3a5f;
         }
         .answer-input {
-            flex: 1;
+            width: 160px;
             border: none;
             border-bottom: 1px dashed #333;
-            padding: 2px 6px;
+            padding: 4px 8px;
+            margin: 0 10px;
             font-size: 16px;
-            text-transform: none;
+            text-align: center;
             background: transparent;
             outline: none;
-            max-width: 220px;
+            text-transform: none;
         }
         .answer-input:focus {
             border-bottom: 2px solid #1f3a5f;
@@ -134,6 +139,11 @@
             background-color: #e6f0ff;
             border-bottom: 1px solid #1f3a5f;
             border-radius: 3px 3px 0 0;
+        }
+        .plain-row {
+            padding-left: 44px;
+            margin: 6px 0;
+            color: #333;
         }
 
         /* Highlight & Menu */
@@ -338,89 +348,85 @@
 
                 <div class="notes-section">
                     <h4>His novel, Les Misérables</h4>
-                    <div class="answer-line">
-                        <span class="q-label">31</span>
-                        <span>It has been adapted for theatre and cinema.<br>We know more about its overall </span>
-                        <input type="text" class="answer-input" id="q31" maxlength="20" placeholder="">
-                        <span> than about its author.</span>
+                    <div class="answer-row">
+                        <span class="q-number">31</span>
+                        <span>It has been adapted for theatre and cinema.</span>
+                    </div>
+                    <div class="answer-row">
+                        <span class="q-number"></span>
+                        <span>We know more about its overall</span>
+                        <input type="text" class="answer-input" id="q31" placeholder="">
+                        <span>than about its author.</span>
                     </div>
                 </div>
 
                 <div class="notes-section">
                     <h4>His early career</h4>
-                    <div class="answer-line">
-                        <span>In Paris, his career was successful and he led the Romantic movement.</span>
+                    <div class="plain-row">In Paris, his career was successful and he led the Romantic movement.</div>
+                    <div class="answer-row">
+                        <span class="q-number">32</span>
+                        <span>He spoke publicly about social issues, such as</span>
+                        <input type="text" class="answer-input" id="q32" placeholder="">
+                        <span>and education.</span>
                     </div>
-                    <div class="answer-line">
-                        <span class="q-label">32</span>
-                        <span>He spoke publicly about social issues, such as </span>
-                        <input type="text" class="answer-input" id="q32" maxlength="20" placeholder="">
-                        <span> and education.</span>
-                    </div>
-                    <div class="answer-line">
-                        <span>Napoleon III disliked his views and exiled him.</span>
-                    </div>
+                    <div class="plain-row">Napoleon III disliked his views and exiled him.</div>
                 </div>
 
                 <div class="notes-section">
                     <h4>His exile from France</h4>
-                    <div class="answer-line">
-                        <span class="q-label">33</span>
-                        <span>Victor Hugo had to live elsewhere in </span>
-                        <input type="text" class="answer-input" id="q33" maxlength="20" placeholder="">
+                    <div class="answer-row">
+                        <span class="q-number">33</span>
+                        <span>Victor Hugo had to live elsewhere in</span>
+                        <input type="text" class="answer-input" id="q33" placeholder="">
                         <span>.</span>
                     </div>
-                    <div class="answer-line">
-                        <span class="q-label">34</span>
-                        <span>He used his income from the sale of some </span>
-                        <input type="text" class="answer-input" id="q34" maxlength="20" placeholder="">
-                        <span> he had written to buy a house on Guernsey.</span>
+                    <div class="answer-row">
+                        <span class="q-number">34</span>
+                        <span>He used his income from the sale of some</span>
+                        <input type="text" class="answer-input" id="q34" placeholder="">
+                        <span>he had written to buy a house on Guernsey.</span>
                     </div>
                 </div>
 
                 <div class="notes-section">
                     <h4>His house on Guernsey</h4>
-                    <div class="answer-line">
-                        <span>Victor Hugo lived in this house until the end of the Empire in France.</span>
+                    <div class="plain-row">Victor Hugo lived in this house until the end of the Empire in France.</div>
+                    <div class="answer-row">
+                        <span class="q-number">35</span>
+                        <span>The ground floor contains portraits,</span>
+                        <input type="text" class="answer-input" id="q35" placeholder="">
+                        <span>and tapestries that he valued.</span>
                     </div>
-                    <div class="answer-line">
-                        <span class="q-label">35</span>
-                        <span>The ground floor contains portraits, </span>
-                        <input type="text" class="answer-input" id="q35" maxlength="20" placeholder="">
-                        <span> and tapestries that he valued.</span>
+                    <div class="answer-row">
+                        <span class="q-number">36</span>
+                        <span>He bought cheap</span>
+                        <input type="text" class="answer-input" id="q36" placeholder="">
+                        <span>made of wood and turned this into beautiful wall carvings.</span>
                     </div>
-                    <div class="answer-line">
-                        <span class="q-label">36</span>
-                        <span>He bought cheap </span>
-                        <input type="text" class="answer-input" id="q36" maxlength="20" placeholder="">
-                        <span> made of wood and turned this into beautiful wall carvings.</span>
+                    <div class="answer-row">
+                        <span class="q-number">37</span>
+                        <span>The first floor consists of furnished areas with wallpaper and</span>
+                        <input type="text" class="answer-input" id="q37" placeholder="">
+                        <span>that have a Chinese design.</span>
                     </div>
-                    <div class="answer-line">
-                        <span class="q-label">37</span>
-                        <span>The first floor consists of furnished areas with wallpaper and </span>
-                        <input type="text" class="answer-input" id="q37" maxlength="20" placeholder="">
-                        <span> that have a Chinese design.</span>
-                    </div>
-                    <div class="answer-line">
-                        <span>The library still contains many of his favourite books.</span>
-                    </div>
-                    <div class="answer-line">
-                        <span class="q-label">38</span>
-                        <span>He wrote in a room at the top of the house that had a view of the </span>
-                        <input type="text" class="answer-input" id="q38" maxlength="20" placeholder="">
+                    <div class="plain-row">The library still contains many of his favourite books.</div>
+                    <div class="answer-row">
+                        <span class="q-number">38</span>
+                        <span>He wrote in a room at the top of the house that had a view of the</span>
+                        <input type="text" class="answer-input" id="q38" placeholder="">
                         <span>.</span>
                     </div>
-                    <div class="answer-line">
-                        <span class="q-label">39</span>
-                        <span>He entertained other writers as well as poor </span>
-                        <input type="text" class="answer-input" id="q39" maxlength="20" placeholder="">
-                        <span> in his house.</span>
+                    <div class="answer-row">
+                        <span class="q-number">39</span>
+                        <span>He entertained other writers as well as poor</span>
+                        <input type="text" class="answer-input" id="q39" placeholder="">
+                        <span>in his house.</span>
                     </div>
-                    <div class="answer-line">
-                        <span class="q-label">40</span>
-                        <span>Victor Hugo's </span>
-                        <input type="text" class="answer-input" id="q40" maxlength="20" placeholder="">
-                        <span> gave ownership of the house to the city of Paris in 1927.</span>
+                    <div class="answer-row">
+                        <span class="q-number">40</span>
+                        <span>Victor Hugo's</span>
+                        <input type="text" class="answer-input" id="q40" placeholder="">
+                        <span>gave ownership of the house to the city of Paris in 1927.</span>
                     </div>
                 </div>
             </div>
@@ -502,7 +508,7 @@
                     markAnswered(i);
                 }
                 field.addEventListener('input', function() {
-                    // ONE WORD ONLY — remove extra spaces & special chars
+                    // ONE WORD ONLY — trim & clean
                     let val = this.value.trim().replace(/\s+/g, ' ').replace(/[^a-zA-Z'-]/g, '');
                     this.value = val;
                     localStorage.setItem(LISTENING_STORAGE_KEY + '_q' + i, val);
