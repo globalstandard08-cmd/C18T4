@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Listening - Test 4 Part 3</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            background-color: #f4f6f9;
+            padding: 20px;
+            line-height: 1.7;
+            position: relative;
+            user-select: text;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: visible;
+            position: relative;
+        }
+        .logo-section {
+            text-align: center;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .logo-section img {
+            height: 120px;
+            width: auto;
+            object-fit: contain;
+        }
+        .header-bar {
+            background-color: #1f3a5f;
+            color: white;
+            padding: 15px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .audio-player {
+            background: #eef2f7;
+            padding: 18px 25px;
+            margin: 20px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        .audio-player h3 {
+            color: #1f3a5f;
+            margin-bottom: 12px;
+            font-size: 17px;
+        }
+        audio {
+            width: 100%;
+            max-width: 500px;
+        }
+        .content {
+            padding: 0 30px 30px;
+            position: relative;
+        }
+        h2 {
+            color: #1f3a5f;
+            margin: 25px 0 15px;
+            font-size: 22px;
+        }
+        .instruction {
+            background-color: #f8fbfe;
+            border-left: 4px solid #1f3a5f;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        .notes-block {
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 25px;
+            margin-bottom: 30px;
+            background-color: #fdfdfd;
+        }
+
+        /* ===== MULTIPLE CHOICE — CIRCLE BUTTONS ===== */
+        .q-group {
+            margin-bottom: 24px;
+        }
+        .q-label {
+            font-weight: bold;
+            min-width: 40px;
+            color: #1f3a5f;
+            display: inline-block;
+        }
+        .option-row {
+            margin: 6px 0 6px 40px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+        .option-letter {
+            font-weight: bold;
+            min-width: 25px;
+            color: #1f3a5f;
+        }
+        .circle-btn {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #666;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+            background: white;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+        .circle-btn.selected {
+            border-color: #1f3a5f;
+            background-color: #1f3a5f;
+            box-shadow: inset 0 0 0 4px white;
+        }
+
+        /* ===== MULTIPLE SELECT (Q21-22) — CHECKBOX STYLE ===== */
+        .multi-hint {
+            color: #d97706;
+            font-size: 14px;
+            margin: 6px 0 0 40px;
+            font-weight: 500;
+        }
+
+        /* ===== MATCHING — ANSWER BOX ===== */
+        .matching-box {
+            border: 1px solid #ccc;
+            padding: 15px 20px;
+            margin: 15px 0;
+            background-color: #f8fbfe;
+            border-radius: 4px;
+        }
+        .matching-row {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        .matching-row:last-child {
+            border-bottom: none;
+        }
+        .matching-q {
+            font-weight: bold;
+            min-width: 40px;
+            color: #1f3a5f;
+        }
+        .answer-box {
+            width: 50px;
+            height: 36px;
+            border: 1px solid #333;
+            border-radius: 3px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-right: 15px;
+            background: white;
+        }
+        .answer-box:focus {
+            outline: none;
+            border-color: #1f3a5f;
+            box-shadow: 0 0 0 2px rgba(31,58,95,0.2);
+        }
+        .answer-box.filled {
+            background-color: #e6f0ff;
+            border-color: #1f3a5f;
+        }
+
+        /* Highlight & Menu */
+        .user-highlight {
+            background-color: #ffd700;
+            padding: 2px 4px;
+            border-radius: 2px;
+        }
+        .context-menu {
+            position: absolute;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            z-index: 9999;
+            display: none;
+            min-width: 160px;
+        }
+        .context-menu div {
+            padding: 10px 14px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .context-menu div:hover {
+            background: #f0f0f0;
+        }
+        /* Sticky Notes */
+        .sticky-note {
+            position: absolute;
+            width: 170px;
+            min-height: 70px;
+            background: #fff9c4;
+            border: 1px solid #fbc02d;
+            border-radius: 4px;
+            padding: 8px;
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
+            z-index: 9998;
+            font-size: 13px;
+        }
+        .note-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 12px;
+            color: #f57f17;
+        }
+        .note-close {
+            cursor: pointer;
+            font-weight: bold;
+            color: #f57f17;
+        }
+        .note-textarea {
+            width: 100%;
+            height: 50px;
+            border: none;
+            background: transparent;
+            resize: none;
+            outline: none;
+        }
+        /* Status Bar */
+        .question-status {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px;
+            margin: 30px 0;
+            padding: 12px 15px;
+            background: #f0f2f5;
+            border-radius: 4px;
+            border: 1px solid #d0d5dd;
+        }
+        .part-label {
+            font-size: 11px;
+            font-weight: bold;
+            color: #444;
+            margin-right: 4px;
+            margin-left: 8px;
+        }
+        .part-separator {
+            width: 12px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+        .q-indicator {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2px;
+            border: 1px solid #d1d5db;
+            background: #e5e7eb;
+            color: #333;
+            font-size: 13px;
+        }
+        .q-indicator.current {
+            background: #d9dce1;
+            color: #000;
+        }
+        .q-indicator.other {
+            background: #efefef;
+            color: #999;
+        }
+        .q-indicator.answered {
+            background: #10b981;
+            color: white;
+            border-color: #10b981;
+        }
+        .clear-btn {
+            background-color: #dc2626;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .clear-btn:hover {
+            background-color: #b91c1c;
+        }
+        /* Navigation */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        .nav-btn {
+            width: 46px;
+            height: 46px;
+            background-color: #1f3a5f;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+        .nav-btn:hover {
+            background-color: #2e568c;
+        }
+        .back-main-btn {
+            background-color: #6b7280;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 4px;
+            font-size: 15px;
+            text-decoration: none;
+        }
+        .back-main-btn:hover {
+            background-color: #4b5563;
+        }
+    </style>
+</head>
+<body>
+    <div class="context-menu" id="contextMenu">
+        <div id="menuHighlight">✅ Highlight</div>
+        <div id="menuRemove">❌ Remove Highlight</div>
+        <div id="menuNote">📝 Add Note</div>
+    </div>
+
+    <div class="container">
+        <div class="logo-section">
+            <img src="ielts-logo.png" alt="IELTS Logo">
+        </div>
+        <div class="header-bar">
+            <span>LISTENING TEST 4 - PART 3</span>
+            <span style="font-size:15px; opacity:0.9;">Exam Mode</span>
+        </div>
+
+        <div class="audio-player">
+            <h3>Play Recording - Part 3</h3>
+            <audio controls preload="auto">
+                <source src="test4-part3.mp3" type="audio/mpeg">
+                <source src="https://raw.githubusercontent.com/globalstandard08-cmd/ielts-complete-practice/main/listening/test4-part3.mp3" type="audio/mpeg">
+                Your browser does not support audio playback.
+            
+        </div>
+
+        <div class="content" id="highlightArea">
+            <h2>Section 3 – Questions 21–30</h2>
+
+            <!-- ========== QUESTIONS 21–22: CHOOSE TWO LETTERS ========== -->
+            <div class="instruction">
+                <strong>Questions 21 and 22</strong><br>
+                Choose <strong>TWO</strong> letters, <strong>A–E</strong>.
+            </div>
+
+            <div class="notes-block">
+                <div class="q-group" data-q="21-22">
+                    <span class="q-label">21 & 22</span>
+                    <span>Which TWO educational skills were shown in the video of children doing origami?</span>
+                    <p class="multi-hint">Select TWO answers</p>
+                    <div class="option-row" data-value="A">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">A</span>
+                        <span>solving problems</span>
+                    </div>
+                    <div class="option-row" data-value="B">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">B</span>
+                        <span>following instructions</span>
+                    </div>
+                    <div class="option-row" data-value="C">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">C</span>
+                        <span>working cooperatively</span>
+                    </div>
+                    <div class="option-row" data-value="D">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">D</span>
+                        <span>learning through play</span>
+                    </div>
+                    <div class="option-row" data-value="E">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">E</span>
+                        <span>developing hand-eye coordination</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== QUESTIONS 23–27: MATCHING ========== -->
+            <div class="instruction">
+                <strong>Questions 23–27</strong><br>
+                Which comment do the students make about each of the following children in the video?<br>
+                Choose <strong>FIVE</strong> answers from the box and write the correct letter, <strong>A–G</strong>, next to Questions 23–27.
+            </div>
+
+            <div class="matching-box">
+                <strong>Comments</strong><br>
+                <strong>A</strong> demonstrated independence<br>
+                <strong>B</strong> asked for teacher support<br>
+                <strong>C</strong> developed a competitive attitude<br>
+                <strong>D</strong> seemed to find the activity calming<br>
+                <strong>E</strong> seemed pleased with the results<br>
+                <strong>F</strong> seemed confused<br>
+                <strong>G</strong> seemed to find the activity easy
+            </div>
+
+            <div class="notes-block">
+                <div class="matching-row">
+                    <span class="matching-q">23</span>
+                    <input type="text" class="answer-box" id="q23" maxlength="1" placeholder="">
+                    <span>Sid</span>
+                </div>
+                <div class="matching-row">
+                    <span class="matching-q">24</span>
+                    <input type="text" class="answer-box" id="q24" maxlength="1" placeholder="">
+                    <span>Jack</span>
+                </div>
+                <div class="matching-row">
+                    <span class="matching-q">25</span>
+                    <input type="text" class="answer-box" id="q25" maxlength="1" placeholder="">
+                    <span>Naomi</span>
+                </div>
+                <div class="matching-row">
+                    <span class="matching-q">26</span>
+                    <input type="text" class="answer-box" id="q26" maxlength="1" placeholder="">
+                    <span>Anya</span>
+                </div>
+                <div class="matching-row">
+                    <span class="matching-q">27</span>
+                    <input type="text" class="answer-box" id="q27" maxlength="1" placeholder="">
+                    <span>Zara</span>
+                </div>
+            </div>
+
+            <!-- ========== QUESTIONS 28–30: MULTIPLE CHOICE A/B/C ========== -->
+            <div class="instruction">
+                <strong>Questions 28–30</strong><br>
+                Choose the correct letter, <strong>A, B or C</strong>.
+            </div>
+
+            <div class="notes-block">
+                <div class="q-group" data-q="28">
+                    <span class="q-label">28</span>
+                    <span>Before starting an origami activity in class, the students think it is important for the teacher to</span>
+                    <div class="option-row" data-value="A">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">A</span>
+                        <span>make models that demonstrate the different stages.</span>
+                    </div>
+                    <div class="option-row" data-value="B">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">B</span>
+                        <span>check children understand the terminology involved.</span>
+                    </div>
+                    <div class="option-row" data-value="C">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">C</span>
+                        <span>tell children not to worry if they find the activity difficult.</span>
+                    </div>
+                </div>
+
+                <div class="q-group" data-q="29">
+                    <span class="q-label">29</span>
+                    <span>The students agree that some teachers might be unwilling to use origami in class because</span>
+                    <div class="option-row" data-value="A">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">A</span>
+                        <span>they may not think that crafts are important.</span>
+                    </div>
+                    <div class="option-row" data-value="B">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">B</span>
+                        <span>they may not have the necessary skills.</span>
+                    </div>
+                    <div class="option-row" data-value="C">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">C</span>
+                        <span>they may worry that it will take up too much time.</span>
+                    </div>
+                </div>
+
+                <div class="q-group" data-q="30">
+                    <span class="q-label">30</span>
+                    <span>Why do the students decide to use origami in their maths teaching practice?</span>
+                    <div class="option-row" data-value="A">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">A</span>
+                        <span>to correct a particular misunderstanding</span>
+                    </div>
+                    <div class="option-row" data-value="B">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">B</span>
+                        <span>to set a challenge</span>
+                    </div>
+                    <div class="option-row" data-value="C">
+                        <span class="circle-btn"></span>
+                        <span class="option-letter">C</span>
+                        <span>to introduce a new concept</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status Bar -->
+            <div class="question-status">
+                <span class="part-label">Part 1</span>
+                <div class="q-indicator other" data-q="1">1</div>
+                <div class="q-indicator other" data-q="2">2</div>
+                <div class="q-indicator other" data-q="3">3</div>
+                <div class="q-indicator other" data-q="4">4</div>
+                <div class="q-indicator other" data-q="5">5</div>
+                <div class="q-indicator other" data-q="6">6</div>
+                <div class="q-indicator other" data-q="7">7</div>
+                <div class="q-indicator other" data-q="8">8</div>
+                <div class="q-indicator other" data-q="9">9</div>
+                <div class="q-indicator other" data-q="10">10</div>
+                <div class="part-separator"></div>
+                <span class="part-label">Part 2</span>
+                <div class="q-indicator other" data-q="11">11</div>
+                <div class="q-indicator other" data-q="12">12</div>
+                <div class="q-indicator other" data-q="13">13</div>
+                <div class="q-indicator other" data-q="14">14</div>
+                <div class="q-indicator other" data-q="15">15</div>
+                <div class="q-indicator other" data-q="16">16</div>
+                <div class="q-indicator other" data-q="17">17</div>
+                <div class="q-indicator other" data-q="18">18</div>
+                <div class="q-indicator other" data-q="19">19</div>
+                <div class="q-indicator other" data-q="20">20</div>
+                <div class="part-separator"></div>
+                <span class="part-label">Part 3</span>
+                <div class="q-indicator current" data-q="21">21</div>
+                <div class="q-indicator current" data-q="22">22</div>
+                <div class="q-indicator current" data-q="23">23</div>
+                <div class="q-indicator current" data-q="24">24</div>
+                <div class="q-indicator current" data-q="25">25</div>
+                <div class="q-indicator current" data-q="26">26</div>
+                <div class="q-indicator current" data-q="27">27</div>
+                <div class="q-indicator current" data-q="28">28</div>
+                <div class="q-indicator current" data-q="29">29</div>
+                <div class="q-indicator current" data-q="30">30</div>
+                <div class="part-separator"></div>
+                <span class="part-label">Part 4</span>
+                <div class="q-indicator other" data-q="31">31</div>
+                <div class="q-indicator other" data-q="32">32</div>
+                <div class="q-indicator other" data-q="33">33</div>
+                <div class="q-indicator other" data-q="34">34</div>
+                <div class="q-indicator other" data-q="35">35</div>
+                <div class="q-indicator other" data-q="36">36</div>
+                <div class="q-indicator other" data-q="37">37</div>
+                <div class="q-indicator other" data-q="38">38</div>
+                <div class="q-indicator other" data-q="39">39</div>
+                <div class="q-indicator other" data-q="40">40</div>
+            </div>
+
+            <button class="clear-btn" onclick="clearAll()">Clear All Answers</button>
+
+            <div class="nav-container">
+                <a href="listening-test4-part2.html" class="back-main-btn">← Part 2</a>
+                <div class="nav-buttons">
+                    <a href="listening-test4-part2.html" class="nav-btn">←</a>
+                    <a href="listening-test4-part4.html" class="nav-btn">→</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const LISTENING_STORAGE_KEY = 'Listening_Test';
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // ===== Q21-22: CHOOSE TWO (MULTIPLE SELECT) =====
+            const q21_22_group = document.querySelector('[data-q="21-22"]');
+            const q21_22_options = q21_22_group.querySelectorAll('.option-row');
+
+            // Load saved answers
+            let saved21 = localStorage.getItem(LISTENING_STORAGE_KEY + '_q21') || '';
+            let saved22 = localStorage.getItem(LISTENING_STORAGE_KEY + '_q22') || '';
+            if (saved21) markOption(q21_22_options, saved21);
+            if (saved22) markOption(q21_22_options, saved22);
+            if (saved21) markAnswered(21);
+            if (saved22) markAnswered(22);
+
+            function markOption(options, value) {
+                options.forEach(opt => {
+                    if (opt.dataset.value === value) {
+                        opt.querySelector('.circle-btn').classList.add('selected');
+                    }
+                });
+            }
+
+            // Click to toggle — allow UP TO 2 selections
+            q21_22_options.forEach(opt => {
+                opt.addEventListener('click', () => {
+                    const btn = opt.querySelector('.circle-btn');
+                    const val = opt.dataset.value;
+                    let selected = [];
+                    q21_22_options.forEach(o => {
+                        if (o.querySelector('.circle-btn').classList.contains('selected')) {
+                            selected.push(o.dataset.value);
+                        }
+                    });
+
+                    if (btn.classList.contains('selected')) {
+                        // Deselect
+                        btn.classList.remove('selected');
+                        if (saved21 === val) { saved21 = ''; localStorage.removeItem(LISTENING_STORAGE_KEY + '_q21'); unmarkAnswered(21); }
+                        else if (saved22 === val) { saved22 = ''; localStorage.removeItem(LISTENING_STORAGE_KEY + '_q22'); unmarkAnswered(22); }
+                    } else {
+                        // Select — only if fewer than 2
+                        if (selected.length < 2) {
+                            btn.classList.add('selected');
+                            if (!saved21) { saved21 = val; localStorage.setItem(LISTENING_STORAGE_KEY + '_q21', val); markAnswered(21); }
+                            else if (!saved22) { saved22 = val; localStorage.setItem(LISTENING_STORAGE_KEY + '_q22', val); markAnswered(22); }
+                        }
+                    }
+                });
+            });
+
+            // ===== Q23-27: MATCHING =====
+            for (let i = 23; i <= 27; i++) {
+                setupMatching(i);
+            }
+
+            // ===== Q28-30: SINGLE CHOICE A/B/C =====
+            document.querySelectorAll('.q-group[data-q="28"], .q-group[data-q="29"], .q-group[data-q="30"]').forEach(group => {
+                const qNum = parseInt(group.dataset.q);
+                const options = group.querySelectorAll('.option-row');
+
+                const saved = localStorage.getItem(LISTENING_STORAGE_KEY + '_q' + qNum);
+                if (saved) {
+                    options.forEach(opt => {
+                        if (opt.dataset.value === saved) {
+                            opt.querySelector('.circle-btn').classList.add('selected');
+                            markAnswered(qNum);
+                        }
+                    });
+                }
+
+                options.forEach(opt => {
+                    opt.addEventListener('click', () => {
+                        options.forEach(o => o.querySelector('.circle-btn').classList.remove('selected'));
+                        opt.querySelector('.circle-btn').classList.add('selected');
+                        const val = opt.dataset.value;
+                        localStorage.setItem(LISTENING_STORAGE_KEY + '_q' + qNum, val);
+                        markAnswered(qNum);
+                    });
+                });
+            });
+
+            // --- Highlight & Notes ---
+            const highlightArea = document.getElementById('highlightArea');
+            const contextMenu = document.getElementById('contextMenu');
+            let currentRange = null;
+            let lastNoteId = 0;
+
+            highlightArea.addEventListener('contextmenu', e => {
+                const sel = window.getSelection();
+                if (!sel || sel.isCollapsed || !sel.toString().trim()) {
+                    contextMenu.style.display = 'none';
+                    return;
+                }
+                e.preventDefault();
+                currentRange = sel.getRangeAt(0);
+                const rect = currentRange.getBoundingClientRect();
+                contextMenu.style.left = (rect.left + window.scrollX) + 'px';
+                contextMenu.style.top = (rect.bottom + window.scrollY + 5) + 'px';
+                contextMenu.style.display = 'block';
+            });
+
+            document.addEventListener('click', () => contextMenu.style.display = 'none');
+
+            document.getElementById('menuHighlight').onclick = function() {
+                if (!currentRange) return;
+                const span = document.createElement('span');
+                span.className = 'user-highlight';
+                span.textContent = currentRange.toString();
+                currentRange.deleteContents();
+                currentRange.insertNode(span);
+                window.getSelection().removeAllRanges();
+                currentRange = null;
+            };
+
+            document.getElementById('menuRemove').onclick = function() {
+                if (!currentRange) return;
+                try {
+                    let span = currentRange.commonAncestorContainer;
+                    if (span.nodeType === Node.TEXT_NODE) span = span.parentElement;
+                    if (span?.classList.contains('user-highlight')) {
+                        span.replaceWith(document.createTextNode(span.textContent));
+                        highlightArea.normalize();
+                    }
+                } catch (e) {}
+                window.getSelection().removeAllRanges();
+                currentRange = null;
+            };
+
+            document.getElementById('menuNote').onclick = function() {
+                if (!currentRange) return;
+                const rect = currentRange.getBoundingClientRect();
+                const noteId = 'note_' + (++lastNoteId);
+                const note = document.createElement('div');
+                note.className = 'sticky-note';
+                note.id = noteId;
+                note.innerHTML = `<div class="note-header">Note <span class="note-close" onclick="closeNote('${noteId}')">×</span></div><textarea class="note-textarea" placeholder="Type your note..."></textarea>`;
+                note.style.left = (rect.right + window.scrollX + 10) + 'px';
+                note.style.top = (rect.top + window.scrollY) + 'px';
+                document.body.appendChild(note);
+                window.getSelection().removeAllRanges();
+                currentRange = null;
+            };
+
+            window.closeNote = id => document.getElementById(id)?.remove();
+        });
+
+        function setupMatching(qNum) {
+            const field = document.getElementById('q' + qNum);
+            const saved = localStorage.getItem(LISTENING_STORAGE_KEY + '_q' + qNum);
+            if (saved) {
+                field.value = saved;
+                field.classList.add('filled');
+                markAnswered(qNum);
+            }
+            field.addEventListener('input', function() {
+                let val = this.value.trim().toUpperCase().replace(/[^A-G]/g, '');
+                this.value = val;
+                localStorage.setItem(LISTENING_STORAGE_KEY + '_q' + qNum, val);
+                if (val) {
+                    this.classList.add('filled');
+                    markAnswered(qNum);
+                } else {
+                    this.classList.remove('filled');
+                    unmarkAnswered(qNum);
+                }
+            });
+        }
+
+        function clearAll() {
+            if (!confirm("Clear ALL answers, highlights, and notes? This cannot be undone.")) return;
+            // Q21-22
+            localStorage.removeItem(LISTENING_STORAGE_KEY + '_q21');
+            localStorage.removeItem(LISTENING_STORAGE_KEY + '_q22');
+            document.querySelectorAll('[data-q="21-22"] .circle-btn').forEach(b => b.classList.remove('selected'));
+            unmarkAnswered(21); unmarkAnswered(22);
+            // Q23-27
+            for (let i = 23; i <= 27; i++) {
+                localStorage.removeItem(LISTENING_STORAGE_KEY + '_q' + i);
+                const field = document.getElementById('q' + i);
+                if (field) { field.value = ''; field.classList.remove('filled'); }
+                unmarkAnswered(i);
+            }
+            // Q28-30
+            [28,29,30].forEach(q => {
+                localStorage.removeItem(LISTENING_STORAGE_KEY + '_q' + q);
+                document.querySelector(`[data-q="${q}"] .circle-btn`)?.classList.remove('selected');
+                unmarkAnswered(q);
+            });
+            document.querySelectorAll('.user-highlight').forEach(s => s.replaceWith(document.createTextNode(s.textContent)));
+            document.querySelectorAll('.sticky-note').forEach(n => n.remove());
+        }
+
+        function markAnswered(qNum) {
+            document.querySelector(`.q-indicator[data-q="${qNum}"]`)?.classList.add('answered');
+        }
+        function unmarkAnswered(qNum) {
+            document.querySelector(`.q-indicator[data-q="${qNum}"]`)?.classList.remove('answered');
+        }
+    </script>
+</body>
+</html>
