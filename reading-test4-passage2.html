@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Test 4 — Passage 2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+        body {
+            background-color: #f0f4f8;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+        /* ✅ LOGO STYLES — NAVY THEME */
+        .logo-container {
+            width: 100%;
+            background: #ffffff;
+            border-bottom: 2px solid #1f3a5f;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 6px rgba(31, 58, 95, 0.12);
+        }
+        .logo {
+            width: 35%;
+            max-width: 320px;
+            height: auto;
+            display: block;
+        }
+        /* ✅ TWO‑COLUMN LAYOUT */
+        .main-wrapper {
+            display: flex;
+            gap: 18px;
+            padding: 0 18px 12px;
+            height: calc(100vh - 120px);
+        }
+        .passage-column, .questions-column {
+            flex: 1;
+            background: #ffffff;
+            border-radius: 10px;
+            border: 1px solid #c5d2e3;
+            padding: 18px;
+            overflow-y: auto;
+            box-shadow: 0 2px 8px rgba(31, 58, 95, 0.07);
+            position: relative;
+        }
+        h1 {
+            color: #1f3a5f;
+            font-size: 19px;
+            margin-bottom: 14px;
+            text-align: center;
+        }
+        .passage-text p {
+            margin-bottom: 12px;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+        /* ✅ DARK YELLOW HIGHLIGHT — SAME AS LISTENING */
+        .highlight {
+            background-color: #ffd700;
+            padding: 2px 4px;
+            border-radius: 2px;
+            cursor: pointer;
+            color: #000;
+            display: inline;
+        }
+        .questions-section h2 {
+            color: #1f3a5f;
+            font-size: 17px;
+            margin: 15px 0 8px;
+        }
+        .question-block {
+            margin-bottom: 16px;
+            scroll-margin-top: 15px;
+        }
+        .question-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+        .flag-btn {
+            font-size: 17px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.2s;
+            user-select: none;
+        }
+        .flag-btn.flagged {
+            color: #fd7e14;
+        }
+        .question-block p {
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .options label {
+            display: block;
+            margin-left: 15px;
+            margin-bottom: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .answer-input {
+            width: 100%;
+            padding: 6px 10px;
+            border: 1px solid #c5d2e3;
+            border-radius: 6px;
+            font-size: 14px;
+            background: #f0f4f8;
+        }
+        .list-people {
+            border: 1px solid #ccc;
+            padding: 12px;
+            margin: 8px 0 12px 15px;
+            background: #f9fafc;
+        }
+        /* ✅ RIGHT-CLICK CONTEXT MENU */
+        .context-menu {
+            position: absolute;
+            background: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            z-index: 9999;
+            display: none;
+            min-width: 140px;
+        }
+        .context-menu div {
+            padding: 8px 11px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .context-menu div:hover {
+            background: #f0f4f8;
+        }
+        /* ✅ STICKY NOTES - DRAGGABLE */
+        .sticky-note {
+            position: absolute;
+            width: 160px;
+            min-height: 60px;
+            background: #fff380;
+            border: 1px solid #e6c200;
+            border-radius: 4px;
+            padding: 6px;
+            box-shadow: 2px 2px 7px rgba(0,0,0,0.15);
+            z-index: 9998;
+            font-size: 12px;
+            user-select: none;
+        }
+        .note-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            margin-bottom: 4px;
+            font-size: 11px;
+            color: #886a00;
+            cursor: move;
+        }
+        .note-close {
+            cursor: pointer;
+            font-weight: bold;
+            color: #886a00;
+            user-select: none;
+        }
+        .note-textarea {
+            width: 100%;
+            height: 44px;
+            border: none;
+            background: transparent;
+            resize: none;
+            outline: none;
+            font-family: inherit;
+            font-size: 12px;
+            user-select: text;
+        }
+        /* ✅ BOTTOM AREA */
+        .bottom-container {
+            margin: 10px 18px 20px;
+            padding: 10px 12px;
+            background: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #c5d2e3;
+            box-shadow: 0 -2px 5px rgba(31, 58, 95, 0.07);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        /* ✅ QUESTION NAVIGATOR — REAL IELTS COLOR PRIORITY */
+        .question-nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 5px;
+        }
+        .nav-label {
+            font-weight: 600;
+            color: #1f3a5f;
+            font-size: 13px;
+            margin-right: 4px;
+        }
+        .q-indicator {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3px;
+            border: 1px solid #ddd;
+            background: #e5e7eb !important;
+            color: #333;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .q-indicator:hover {
+            opacity: 0.9;
+        }
+        .q-indicator.answered {
+            background: #10b981 !important;
+            color: white !important;
+            border-color: #10b981 !important;
+        }
+        .q-indicator.flagged {
+            background: #fd7e14 !important;
+            color: white !important;
+            border-color: #fd7e14 !important;
+        }
+        .q-indicator.answered.flagged {
+            background: #fd7e14 !important;
+            border-color: #fd7e14 !important;
+        }
+        .q-indicator.current {
+            border: 2px solid #1f3a5f !important;
+        }
+        /* ✅ NAV & ACTION BUTTONS */
+        .bottom-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .clear-answers {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 13px;
+            background: #6b7280;
+            color: white;
+        }
+        .clear-answers:hover {
+            background: #4b5563;
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .back-btn, .next-btn {
+            padding: 6px 12px;
+            background: #f0f4f8;
+            color: #1f3a5f;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid #c5d2e3;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 13px;
+            position: relative;
+            z-index: 9999;
+        }
+        .back-btn:hover, .next-btn:hover {
+            background: #ffffff;
+        }
+        .instructions {
+            font-size: 13px;
+            color: #444;
+            margin: 6px 0 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo -->
+    <div class="logo-container">
+        <img src="ielts-logo.png" alt="IELTS Logo" class="logo">
+    </div>
+    <!-- Right-click Context Menu -->
+    <div class="context-menu" id="contextMenu">
+        <div id="menuHighlight">✅ Highlight</div>
+        <div id="menuRemove">❌ Remove Highlight</div>
+        <div id="menuNote">📝 Add Note</div>
+    </div>
+    <!-- ✅ TWO COLUMNS: LEFT = PASSAGE | RIGHT = QUESTIONS -->
+    <div class="main-wrapper">
+        <!-- LEFT SIDE: PASSAGE TEXT -->
+        <div class="passage-column" id="passageArea">
+            <h1>Reading Passage 2 — The growth mindset</h1>
+            <div class="passage-text">
+                <p style="font-style:italic; color:#555;">You should spend about 20 minutes on Questions 14–26, which are based on Reading Passage 2 below.</p>
+
+                <p>Over the past century, a powerful idea has taken root in the educational landscape. The concept of intelligence as something innate has been supplanted by the idea that intelligence is not fixed, and that, with the right training, we can be the authors of our own cognitive capabilities. Psychologist Alfred Binet, the developer of the first intelligence tests, was one of many 19th-century scientists who held that earlier view and sought to quantify cognitive ability. Then, in the early 20th century, progressive thinkers revolted against the notion that inherent ability is destiny. Instead, educators such as John Dewey argued that every child's intelligence could be developed, given the right environment.</p>
+
+                <p>'Growth mindset theory' is a relatively new – and extremely popular – version of this idea. In many schools today you will see hallways covered in motivational posters and hear speeches on the mindset of great sporting heroes who simply believed their way to the top. A major focus of the growth mindset in schools is coaxing students away from seeing failure as an indication of their ability, and towards seeing it as a chance to improve that ability. As educationalist Jeff Howard noted several decades ago: 'Smart is not something that you just are, smart is something that you can get.'</p>
+
+                <p>The idea of the growth mindset is based on the work of psychologist Carol Dweck in California in the 1990s. In one key experiment, Dweck divided a group of 10- to 12-year-olds into two groups. All were told that they had achieved a high score on a test but the first group were praised for their intelligence in achieving this, while the others were praised for their effort. The second group – those who had been instilled with a 'growth mindset' – were subsequently far more likely to put effort into future tasks. Meanwhile, the former took on only those tasks that would not risk their sense of worth. This group had inferred that success or failure is due to innate ability, and this 'fixed mindset' had led them to fear of failure and lack of effort. Praising ability actually made the students perform worse, while praising effort emphasised that change was possible.</p>
+
+                <p>One of the greatest impediments to successfully implementing a growth mindset, however, is the education system itself: in many parts of the world, the school climate is obsessed with performance in the form of constant testing, analysing and ranking of students – a key characteristic of the fixed mindset. Nor is it unusual for schools to create a certain cognitive dissonance, when they applaud the benefits of a growth mindset but then hand out fixed target grades in lessons based on performance.</p>
+
+                <p>Aside from the implementation problem, the original growth mindset research has also received harsh criticism. The statistician Andrew Gelman claims that 'their research designs have enough degrees of freedom that they could take their data to support just about any theory at all'. Professor of Psychology Timothy Bates, who has been trying to replicate Dweck's work, is finding that the results are repeatedly null. He notes that: 'People with a growth mindset don't cope any better with failure … Kids with the growth mindset aren't getting better grades, either before or after our intervention study.'</p>
+
+                <p>Much of this criticism is not lost on Dweck, and she deserves great credit for responding to it and adapting her work accordingly. In fact, she argues that her work has been misunderstood and misapplied in a range of ways. She has also expressed concerns that her theories are being misappropriated in schools by being conflated with the self-esteem movement: 'For me the growth mindset is a tool for learning and improvement. It's not just a vehicle for making children feel good.'</p>
+
+                <p>But there is another factor at work here. The failure to translate the growth mindset into the classroom might reflect a misunderstanding of the nature of teaching and learning itself. Growth mindset supporters David Yeager and Gregory Walton claim that interventions should be delivered in a subtle way to maximise their effectiveness. They say that if adolescents perceive a teacher's intervention as conveying that they are in need of help, this could undo its intended effects.</p>
+
+                <p>A lot of what drives students is their innate beliefs and how they perceive themselves. There is a strong correlation between self-perception and achievement, but there is evidence to suggest that the actual effect of achievement on self-perception is stronger than the other way round. To stand up in a classroom and successfully deliver a good speech is a genuine achievement, and that is likely to be more powerfully motivating than vague notions of 'motivation' itself.</p>
+
+                <p>Recent evidence would suggest that growth mindset interventions are not the elixir of student learning that its proponents claim it to be. The growth mindset appears to be a viable construct in the lab, which, when administered in the classroom via targeted interventions, doesn't seem to work. It is hard to dispute that having faith in the capacity to change is a good attribute for students. Paradoxically, however, that aspiration is not well served by direct interventions that try to instil it.</p>
+
+                <p>Motivational posters and talks are often a waste of time, and might well give students a deluded notion of what success actually means. Teaching concrete skills such as how to write an effective introduction to an essay then praising students' effort in getting there is probably a far better way of improving confidence than telling them how unique they are, or indeed how capable they are of changing their own brains. Perhaps growth mindset works best as a philosophy and not an intervention.</p>
+            </div>
+        </div>
+        <!-- RIGHT SIDE: QUESTIONS -->
+        <div class="questions-column" id="questionsArea">
+            <div class="questions-section">
+
+                <h2>Questions 14–16</h2>
+                <p class="instructions">Choose the correct letter, A, B, C or D. Write the correct letter in boxes 14–16 on your answer sheet.</p>
+
+                <div class="question-block" id="q14">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(14)" id="flag14">🚩</span>
+                        <p><strong>14.</strong> What can we learn from the first paragraph?</p>
+                    </div>
+                    <div class="options">
+                        <label><input type="radio" name="q14" value="A"> A where the notion of innate intelligence first began</label>
+                        <label><input type="radio" name="q14" value="B"> B when ideas about the nature of intelligence began to shift</label>
+                        <label><input type="radio" name="q14" value="C"> C how scientists have responded to changing views of intelligence</label>
+                        <label><input type="radio" name="q14" value="D"> D why thinkers turned away from the idea of intelligence being fixed</label>
+                    </div>
+                </div>
+
+                <div class="question-block" id="q15">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(15)" id="flag15">🚩</span>
+                        <p><strong>15.</strong> The second paragraph describes how schools encourage students to</p>
+                    </div>
+                    <div class="options">
+                        <label><input type="radio" name="q15" value="A"> A identify their personal ambitions.</label>
+                        <label><input type="radio" name="q15" value="B"> B help each other to realise their goals.</label>
+                        <label><input type="radio" name="q15" value="C"> C have confidence in their potential to succeed.</label>
+                        <label><input type="radio" name="q15" value="D"> D concentrate on where their particular strengths lie.</label>
+                    </div>
+                </div>
+
+                <div class="question-block" id="q16">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(16)" id="flag16">🚩</span>
+                        <p><strong>16.</strong> In the third paragraph, the writer suggests that students with a fixed mindset</p>
+                    </div>
+                    <div class="options">
+                        <label><input type="radio" name="q16" value="A"> A tend to be less competitive.</label>
+                        <label><input type="radio" name="q16" value="B"> B generally have a low sense of self-esteem.</label>
+                        <label><input type="radio" name="q16" value="C"> C will only work hard if they are given constant encouragement.</label>
+                        <label><input type="radio" name="q16" value="D"> D are afraid to push themselves beyond what they see as their limitations.</label>
+                    </div>
+                </div>
+
+                <h2>Questions 17–22</h2>
+                <p class="instructions">Look at the following statements (Questions 17–22) and the list of people below. Match each statement with the correct person or people, A–E. Write the correct letter, A–E, in boxes 17–22 on your answer sheet. <em>NB You may use any letter more than once.</em></p>
+
+                <div class="list-people">
+                    <p><strong>List of People</strong></p>
+                    <p><strong>A</strong> Alfred Binet</p>
+                    <p><strong>B</strong> Carol Dweck</p>
+                    <p><strong>C</strong> Andrew Gelman</p>
+                    <p><strong>D</strong> Timothy Bates</p>
+                    <p><strong>E</strong> David Yeager and Gregory Walton</p>
+                </div>
+
+                <div class="question-block" id="q17">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(17)" id="flag17">🚩</span>
+                        <p><strong>17.</strong> The methodology behind the growth mindset studies was not strict enough.</p>
+                    </div>
+                    <input type="text" class="answer-input" name="q17" placeholder="Write A–E">
+                </div>
+
+                <div class="question-block" id="q18">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(18)" id="flag18">🚩</span>
+                        <p><strong>18.</strong> The idea of the growth mindset has been incorrectly interpreted.</p>
+                    </div>
+                    <input type="text" class="answer-input" name="q18" placeholder="Write A–E">
+                </div>
+
+                <div class="question-block" id="q19">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(19)" id="flag19">🚩</span>
+                        <p><strong>19.</strong> Intellectual ability is an unchangeable feature of each individual.</p>
+                    </div>
+                    <input type="text" class="answer-input" name="q19" placeholder="Write A–E">
+                </div>
+
+                <div class="question-block" id="q20">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(20)" id="flag20">🚩</span>
+                        <p><strong>20.</strong> The growth mindset should be promoted without students being aware of it.</p>
+                    </div>
+                    <input type="text" class="answer-input" name="q20" placeholder="Write A–E">
+                </div>
+
+                <div class="question-block" id="q21">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(21)" id="flag21">🚩</span>
+                        <p><strong>21.</strong> The growth mindset is not simply about boosting students' morale.</p>
+                    </div>
+                    <input type="text" class="answer-input" name="q21" placeholder="Write A–E">
+                </div>
+
+                <div class="question-block" id="q22">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(22)" id="flag22">🚩</span>
+                        <p><strong>22.</strong> Research shows that the growth mindset has no effect on academic achievement.</p>
+                    </div>
+                    <input type="text" class="answer-input" name="q22" placeholder="Write A–E">
+                </div>
+
+                <h2>Questions 23–26</h2>
+                <p class="instructions">Do the following statements agree with the views of the writer in Reading Passage 2? In boxes 23–26 on your answer sheet, write</p>
+                <p style="margin-left:15px; font-weight:500;">YES &nbsp; &nbsp; if the statement agrees with the views of the writer<br>
+                NO &nbsp; &nbsp; if the statement contradicts the views of the writer<br>
+                NOT GIVEN &nbsp; if it is impossible to say what the writer thinks about this</p>
+
+                <div class="question-block" id="q23">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(23)" id="flag23">🚩</span>
+                        <p><strong>23.</strong> Dweck has handled criticisms of her work in an admirable way.</p>
+                    </div>
+                    <input type="text" class="answer-input" name="q23" placeholder="YES / NO / NOT GIVEN">
+                </div>
+
+                <div class="question-block" id="q24">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(24)" id="flag24">🚩</span>
+                        <p><strong>24.</strong> Students' self-perception is a more effective driver of self-confidence than actual achievement is.</p>
+                    </div>
+                    <input type="text" class="answer-input" name="q24" placeholder="YES / NO / NOT GIVEN">
+                </div>
+
+                <div class="question-block" id="q25">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(25)" id="flag25">🚩</span>
+                        <p><strong>25.</strong> Recent evidence about growth mindset interventions has attracted unfair coverage in the media.</p>
+                    </div>
+                    <input type="text" class="answer-input" name="q25" placeholder="YES / NO / NOT GIVEN">
+                </div>
+
+                <div class="question-block" id="q26">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(26)" id="flag26">🚩</span>
+                        <p><strong>26.</strong> Deliberate attempts to encourage students to strive for high achievement may have a negative effect.</p>
+                    </div>
+                    <input type="text" class="answer-input" name="q26" placeholder="YES / NO / NOT GIVEN">
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- ✅ BOTTOM AREA: NAVIGATOR + CONTROLS -->
+    <div class="bottom-container">
+        <div class="question-nav" id="questionNav">
+            <span class="nav-label">Questions:</span>
+        </div>
+        <div class="bottom-controls">
+            <div class="action-buttons">
+                <button class="clear-answers" onclick="clearAllAnswers()">🗑️ Clear All Answers</button>
+            </div>
+            <div class="nav-buttons">
+                <a href="reading-test4-passage1.html" class="back-btn">← Previous</a>
+                <a href="reading-test4-passage3.html" class="next-btn">Next →</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        // ✅ SHARED READING STORAGE KEY — SAME ACROSS ALL PASSAGES
+        const READING_STORAGE_KEY = 'Reading_Test';
+        const passageId = 'reading-test4-passage2'; // for highlights, notes, flags only
+        const TOTAL_QUESTIONS = 40;
+        const Q_START = 14;
+        const Q_END = 26;
+
+        // ✅ Global variables
+        let currentRange = null;
+        let lastNoteId = 0;
+        let dragNote = null;
+        let dragOffsetX = 0;
+        let dragOffsetY = 0;
+
+        // ✅ Initialize Question Navigator 1–40
+        function initQuestionNav() {
+            const navContainer = document.getElementById('questionNav');
+            for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
+                const btn = document.createElement('div');
+                btn.className = 'q-indicator';
+                btn.textContent = i;
+                btn.id = 'stat' + i;
+                btn.onclick = () => jumpToQuestion(i);
+                navContainer.appendChild(btn);
+            }
+            updateStatus();
+        }
+
+        function jumpToQuestion(qNum) {
+            document.querySelectorAll('.q-indicator').forEach(el => el.classList.remove('current'));
+            const btn = document.getElementById('stat' + qNum);
+            if (btn) btn.classList.add('current');
+            const el = document.getElementById('q' + qNum);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // ✅ Toggle Flag — saved per passage, NOT shared
+        function toggleFlag(qNum) {
+            const flag = document.getElementById('flag' + qNum);
+            const stat = document.getElementById('stat' + qNum);
+            const isFlagged = flag.classList.toggle('flagged');
+            stat.classList.toggle('flagged', isFlagged);
+            localStorage.setItem(`${passageId}_flag_${qNum}`, isFlagged);
+        }
+
+        // ✅ VALID SELECTION CHECK
+        function isSelectionValid(selection) {
+            if (!selection || selection.isCollapsed || selection.toString().trim() === '') return false;
+            try {
+                const range = selection.getRangeAt(0);
+                const container = range.commonAncestorContainer;
+                const parent = container.nodeType === Node.TEXT_NODE ? container.parentElement : container;
+                const inPassage = document.getElementById('passageArea').contains(parent);
+                const inQuestions = document.getElementById('questionsArea').contains(parent);
+                const inInput = parent.closest('input, textarea, button, .note-close, label input') !== null;
+                return (inPassage || inQuestions) && !inInput;
+            } catch {
+                return false;
+            }
+        }
+
+        // ✅ Right-click menu
+        const contextMenu = document.getElementById('contextMenu');
+        document.addEventListener('contextmenu', function(e) {
+            const selection = window.getSelection();
+            if (!isSelectionValid(selection)) {
+                contextMenu.style.display = 'none';
+                return;
+            }
+            e.preventDefault();
+            currentRange = selection.getRangeAt(0).cloneRange();
+            const rect = currentRange.getBoundingClientRect();
+            contextMenu.style.left = (rect.left + window.scrollX) + 'px';
+            contextMenu.style.top = (rect.bottom + window.scrollY + 5) + 'px';
+            contextMenu.style.display = 'block';
+        });
+        document.addEventListener('click', () => contextMenu.style.display = 'none');
+
+        // ✅ Highlight text
+        document.getElementById('menuHighlight').addEventListener('click', function() {
+            if (!currentRange) return;
+            try {
+                const span = document.createElement('span');
+                span.className = 'highlight';
+                span.textContent = currentRange.toString();
+                currentRange.deleteContents();
+                currentRange.insertNode(span);
+                window.getSelection().removeAllRanges();
+                currentRange = null;
+                saveHighlights();
+            } catch (err) {
+                console.error('Highlight error:', err);
+                alert('Please select a smaller piece of text to highlight.');
+            }
+        });
+
+        // ✅ Remove highlight
+        document.getElementById('menuRemove').addEventListener('click', function() {
+            if (!currentRange) return;
+            try {
+                const startEl = currentRange.startContainer.nodeType === Node.TEXT_NODE 
+                    ? currentRange.startContainer.parentElement 
+                    : currentRange.startContainer;
+                const endEl = currentRange.endContainer.nodeType === Node.TEXT_NODE 
+                    ? currentRange.endContainer.parentElement 
+                    : currentRange.endContainer;
+                
+                let target = startEl.closest('.highlight') || endEl.closest('.highlight');
+                
+                if (target) {
+                    const parent = target.parentNode;
+                    parent.replaceChild(document.createTextNode(target.textContent), target);
+                    parent.normalize();
+                }
+            } catch (e) {
+                console.log('Remove highlight error:', e);
+            }
+            window.getSelection().removeAllRanges();
+            currentRange = null;
+            saveHighlights();
+        });
+
+        // ✅ Add Sticky Note + Draggable Setup
+        document.getElementById('menuNote').addEventListener('click', function() {
+            if (!currentRange) return;
+            const rect = currentRange.getBoundingClientRect();
+            const noteId = 'note_' + (++lastNoteId);
+            const note = document.createElement('div');
+            note.className = 'sticky-note';
+            note.id = noteId;
+            note.innerHTML = `
+                <div class="note-header" onmousedown="startDrag(event, '${noteId}')">Note <span class="note-close" onclick="closeNote('${noteId}')">×</span></div>
+                <textarea class="note-textarea" placeholder="Type your note..." oninput="saveNotes()"></textarea>
+            `;
+            note.style.left = (rect.right + window.scrollX + 8) + 'px';
+            note.style.top = (rect.top + window.scrollY) + 'px';
+            document.body.appendChild(note);
+            window.getSelection().removeAllRanges();
+            currentRange = null;
+            saveNotes();
+        });
+
+        // ✅ Draggable Note Functions
+        function startDrag(e, noteId) {
+            dragNote = document.getElementById(noteId);
+            const rect = dragNote.getBoundingClientRect();
+            dragOffsetX = e.clientX - rect.left;
+            dragOffsetY = e.clientY - rect.top;
+            dragNote.style.zIndex = '10000';
+            e.preventDefault();
+        }
+        document.addEventListener('mousemove', function(e) {
+            if (!dragNote) return;
+            dragNote.style.left = (e.pageX - dragOffsetX) + 'px';
+            dragNote.style.top = (e.pageY - dragOffsetY) + 'px';
+        });
+        document.addEventListener('mouseup', function() {
+            if (dragNote) {
+                dragNote.style.zIndex = '9998';
+                dragNote = null;
+                saveNotes();
+            }
+        });
+        function closeNote(id) {
+            document.getElementById(id)?.remove();
+            saveNotes();
+        }
+
+        // ✅ Save/Load Highlights — per passage, NOT shared
+        function saveHighlights() {
+            const passageArea = document.getElementById('passageArea');
+            const questionsArea = document.getElementById('questionsArea');
+            localStorage.setItem(`${passageId}_passage_highlights`, passageArea.innerHTML);
+            localStorage.setItem(`${passageId}_questions_highlights`, questionsArea.innerHTML);
+        }
+        function loadHighlights() {
+            const passageArea = document.getElementById('passageArea');
+            const questionsArea = document.getElementById('questionsArea');
+            const passHtml = localStorage.getItem(`${passageId}_passage_highlights`);
+            const quesHtml = localStorage.getItem(`${passageId}_questions_highlights`);
+            if (passHtml) passageArea.innerHTML = passHtml;
+            if (quesHtml) questionsArea.innerHTML = quesHtml;
+        }
+
+        // ✅ Save/Load Notes — per passage, NOT shared
+        function saveNotes() {
+            const notes = Array.from(document.querySelectorAll('.sticky-note')).map(n => ({
+                id: n.id, left: n.style.left, top: n.style.top, text: n.querySelector('.note-textarea').value
+            }));
+            localStorage.setItem(`${passageId}_notes`, JSON.stringify(notes));
+        }
+        function loadNotes() {
+            const saved = localStorage.getItem(`${passageId}_notes`);
+            if (!saved) return;
+            JSON.parse(saved).forEach(n => {
+                const note = document.createElement('div');
+                note.className = 'sticky-note';
+                note.id = n.id;
+                note.innerHTML = `
+                    <div class="note-header" onmousedown="startDrag(event, '${n.id}')">Note <span class="note-close" onclick="closeNote('${n.id}')">×</span></div>
+                    <textarea class="note-textarea">${n.text}</textarea>
+                `;
+                note.style.left = n.left;
+                note.style.top = n.top;
+                document.body.appendChild(note);
+                const num = parseInt(n.id.split('_')[1]);
+                if (num > lastNoteId) lastNoteId = num;
+            });
+        }
+
+        // ✅ SAVE ANSWERS TO SHARED READING KEY — q14–q26 saved to Reading_Test_q14 etc.
+        function saveAnswers() {
+            for (let q = Q_START; q <= Q_END; q++) {
+                const textInput = document.querySelector(`input[name="q${q}"]`);
+                if (textInput && textInput.type === 'text') {
+                    let val = textInput.value.trim().toUpperCase();
+                    localStorage.setItem(`${READING_STORAGE_KEY}_q${q}`, val);
+                }
+                const radios = document.getElementsByName(`q${q}`);
+                if (radios.length > 0) {
+                    for (let r of radios) {
+                        if (r.checked) {
+                            localStorage.setItem(`${READING_STORAGE_KEY}_q${q}`, r.value);
+                        }
+                    }
+                }
+            }
+            updateStatus();
+        }
+
+        // ✅ LOAD ANSWERS FROM SHARED READING KEY
+        function loadAnswers() {
+            for (let q = Q_START; q <= Q_END; q++) {
+                const savedVal = localStorage.getItem(`${READING_STORAGE_KEY}_q${q}`);
+                if (!savedVal) continue;
+                const radios = document.getElementsByName(`q${q}`);
+                if (radios.length > 0) {
+                    for (let r of radios) {
+                        r.checked = (r.value === savedVal);
+                    }
+                } else {
+                    const input = document.querySelector(`input[name="q${q}"]`);
+                    if (input) input.value = savedVal;
+                }
+            }
+            updateStatus();
+        }
+
+        // ✅ Update status colors — SHARED KEY
+        function updateStatus() {
+            for (let q = 1; q <= TOTAL_QUESTIONS; q++) {
+                const statBtn = document.getElementById('stat' + q);
+                if (!statBtn) continue;
+                const val = (localStorage.getItem(`${READING_STORAGE_KEY}_q${q}`) || '').trim().toUpperCase();
+                const hasAnswer = val.length > 0;
+                const isFlagged = localStorage.getItem(`${passageId}_flag_${q}`) === 'true';
+                statBtn.classList.remove('answered', 'flagged');
+                if (isFlagged) {
+                    statBtn.classList.add('flagged');
+                } else if (hasAnswer) {
+                    statBtn.classList.add('answered');
+                }
+                const flagIcon = document.getElementById('flag' + q);
+                if (flagIcon) flagIcon.classList.toggle('flagged', isFlagged);
+            }
+        }
+
+        // ✅ Clear All — CLEARS ONLY SHARED ANSWERS 14–26 + passage-specific flags/highlights/notes
+        function clearAllAnswers() {
+            if (!confirm('⚠️ This will clear ALL answers, flags, highlights and notes for this passage. Continue?')) return;
+            document.querySelectorAll('.answer-input').forEach(input => input.value = '');
+            document.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
+            document.querySelectorAll('.flag-btn').forEach(f => f.classList.remove('flagged'));
+            document.querySelectorAll('.highlight').forEach(s => {
+                const p = s.parentNode;
+                p.replaceChild(document.createTextNode(s.textContent), p);
+                p.normalize();
+            });
+            document.querySelectorAll('.sticky-note').forEach(n => n.remove());
+            // Clear SHARED answers for Q14–Q26
+            for (let q = Q_START; q <= Q_END; q++) {
+                localStorage.removeItem(`${READING_STORAGE_KEY}_q${q}`);
+            }
+            // Clear passage-specific data
+            for (let q = Q_START; q <= Q_END; q++) {
+                localStorage.removeItem(`${passageId}_flag_${q}`);
+            }
+            localStorage.removeItem(`${passageId}_passage_highlights`);
+            localStorage.removeItem(`${passageId}_questions_highlights`);
+            localStorage.removeItem(`${passageId}_notes`);
+            
+            updateStatus();
+        }
+
+        // ✅ Auto-save on any input change
+        document.addEventListener('input', function(e) {
+            if (e.target.name?.startsWith('q') || e.target.classList.contains('note-textarea')) {
+                saveAnswers();
+                if (e.target.classList.contains('note-textarea')) saveNotes();
+            }
+        });
+
+        // ✅ Initialize
+        window.onload = function() {
+            initQuestionNav();
+            loadAnswers();
+            loadHighlights();
+            loadNotes();
+        };
+    </script>
+</body>
+</html>
