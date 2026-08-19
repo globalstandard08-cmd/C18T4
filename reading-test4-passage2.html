@@ -383,42 +383,42 @@
                         <span class="flag-btn" onclick="toggleFlag(17)" id="flag17">🚩</span>
                         <p><strong>17.</strong> The methodology behind the growth mindset studies was not strict enough.</p>
                     </div>
-                    <input type="text" class="answer-input" name="q17" placeholder="Write A–E" oninput="saveAnswers()">
+                    <input type="text" class="answer-input" id="input_q17" name="q17" placeholder="Write A–E" oninput="saveAnswers()">
                 </div>
                 <div class="question-block" id="q18">
                     <div class="question-header">
                         <span class="flag-btn" onclick="toggleFlag(18)" id="flag18">🚩</span>
                         <p><strong>18.</strong> The idea of the growth mindset has been incorrectly interpreted.</p>
                     </div>
-                    <input type="text" class="answer-input" name="q18" placeholder="Write A–E" oninput="saveAnswers()">
+                    <input type="text" class="answer-input" id="input_q18" name="q18" placeholder="Write A–E" oninput="saveAnswers()">
                 </div>
                 <div class="question-block" id="q19">
                     <div class="question-header">
                         <span class="flag-btn" onclick="toggleFlag(19)" id="flag19">🚩</span>
                         <p><strong>19.</strong> Intellectual ability is an unchangeable feature of each individual.</p>
                     </div>
-                    <input type="text" class="answer-input" name="q19" placeholder="Write A–E" oninput="saveAnswers()">
+                    <input type="text" class="answer-input" id="input_q19" name="q19" placeholder="Write A–E" oninput="saveAnswers()">
                 </div>
                 <div class="question-block" id="q20">
                     <div class="question-header">
                         <span class="flag-btn" onclick="toggleFlag(20)" id="flag20">🚩</span>
                         <p><strong>20.</strong> The growth mindset should be promoted without students being aware of it.</p>
                     </div>
-                    <input type="text" class="answer-input" name="q20" placeholder="Write A–E" oninput="saveAnswers()">
+                    <input type="text" class="answer-input" id="input_q20" name="q20" placeholder="Write A–E" oninput="saveAnswers()">
                 </div>
                 <div class="question-block" id="q21">
                     <div class="question-header">
                         <span class="flag-btn" onclick="toggleFlag(21)" id="flag21">🚩</span>
                         <p><strong>21.</strong> The growth mindset is not simply about boosting students' morale.</p>
                     </div>
-                    <input type="text" class="answer-input" name="q21" placeholder="Write A–E" oninput="saveAnswers()">
+                    <input type="text" class="answer-input" id="input_q21" name="q21" placeholder="Write A–E" oninput="saveAnswers()">
                 </div>
                 <div class="question-block" id="q22">
                     <div class="question-header">
                         <span class="flag-btn" onclick="toggleFlag(22)" id="flag22">🚩</span>
                         <p><strong>22.</strong> Research shows that the growth mindset has no effect on academic achievement.</p>
                     </div>
-                    <input type="text" class="answer-input" name="q22" placeholder="Write A–E" oninput="saveAnswers()">
+                    <input type="text" class="answer-input" id="input_q22" name="q22" placeholder="Write A–E" oninput="saveAnswers()">
                 </div>
                 <h2>Questions 23–26</h2>
                 <p class="instructions">Do the following statements agree with the views of the writer in Reading Passage 2? In boxes 23–26 on your answer sheet, write</p>
@@ -430,28 +430,28 @@
                         <span class="flag-btn" onclick="toggleFlag(23)" id="flag23">🚩</span>
                         <p><strong>23.</strong> Dweck has handled criticisms of her work in an admirable way.</p>
                     </div>
-                    <input type="text" class="answer-input" name="q23" placeholder="YES / NO / NOT GIVEN" oninput="saveAnswers()">
+                    <input type="text" class="answer-input" id="input_q23" name="q23" placeholder="YES / NO / NOT GIVEN" oninput="saveAnswers()">
                 </div>
                 <div class="question-block" id="q24">
                     <div class="question-header">
                         <span class="flag-btn" onclick="toggleFlag(24)" id="flag24">🚩</span>
                         <p><strong>24.</strong> Students' self-perception is a more effective driver of self-confidence than actual achievement is.</p>
                     </div>
-                    <input type="text" class="answer-input" name="q24" placeholder="YES / NO / NOT GIVEN" oninput="saveAnswers()">
+                    <input type="text" class="answer-input" id="input_q24" name="q24" placeholder="YES / NO / NOT GIVEN" oninput="saveAnswers()">
                 </div>
                 <div class="question-block" id="q25">
                     <div class="question-header">
                         <span class="flag-btn" onclick="toggleFlag(25)" id="flag25">🚩</span>
                         <p><strong>25.</strong> Recent evidence about growth mindset interventions has attracted unfair coverage in the media.</p>
                     </div>
-                    <input type="text" class="answer-input" name="q25" placeholder="YES / NO / NOT GIVEN" oninput="saveAnswers()">
+                    <input type="text" class="answer-input" id="input_q25" name="q25" placeholder="YES / NO / NOT GIVEN" oninput="saveAnswers()">
                 </div>
                 <div class="question-block" id="q26">
                     <div class="question-header">
                         <span class="flag-btn" onclick="toggleFlag(26)" id="flag26">🚩</span>
                         <p><strong>26.</strong> Deliberate attempts to encourage students to strive for high achievement may have a negative effect.</p>
                     </div>
-                    <input type="text" class="answer-input" name="q26" placeholder="YES / NO / NOT GIVEN" oninput="saveAnswers()">
+                    <input type="text" class="answer-input" id="input_q26" name="q26" placeholder="YES / NO / NOT GIVEN" oninput="saveAnswers()">
                 </div>
             </div>
         </div>
@@ -669,38 +669,50 @@
                 if (num > lastNoteId) lastNoteId = num;
             });
         }
-        // ✅ SAVE ANSWERS TO SHARED READING KEY — q14–q26 saved to Reading_Test_q14 etc.
+        // ✅ SAVE ANSWERS — FIXED: uses ID selector for text inputs
         function saveAnswers() {
             for (let q = Q_START; q <= Q_END; q++) {
-                const textInput = document.querySelector(`input[name="q${q}"]`);
-                if (textInput && textInput.type === 'text') {
-                    let val = textInput.value.trim().toUpperCase();
-                    localStorage.setItem(`${READING_STORAGE_KEY}_q${q}`, val);
-                }
+                // Handle radio buttons (Q14-Q16)
                 const radios = document.getElementsByName(`q${q}`);
                 if (radios.length > 0) {
                     for (let r of radios) {
                         if (r.checked) {
                             localStorage.setItem(`${READING_STORAGE_KEY}_q${q}`, r.value);
+                            break;
+                        }
+                    }
+                } 
+                // Handle text inputs (Q17-Q26) — uses ID selector now!
+                else {
+                    const textInput = document.getElementById(`input_q${q}`);
+                    if (textInput) {
+                        let val = textInput.value.trim().toUpperCase();
+                        if (val === '') {
+                            localStorage.removeItem(`${READING_STORAGE_KEY}_q${q}`);
+                        } else {
+                            localStorage.setItem(`${READING_STORAGE_KEY}_q${q}`, val);
                         }
                     }
                 }
             }
             updateStatus();
         }
-        // ✅ LOAD ANSWERS FROM SHARED READING KEY
+        // ✅ LOAD ANSWERS — FIXED: uses ID selector for text inputs
         function loadAnswers() {
             for (let q = Q_START; q <= Q_END; q++) {
                 const savedVal = localStorage.getItem(`${READING_STORAGE_KEY}_q${q}`);
-                if (!savedVal) continue;
                 const radios = document.getElementsByName(`q${q}`);
                 if (radios.length > 0) {
+                    // Radio buttons
                     for (let r of radios) {
-                        r.checked = (r.value === savedVal);
+                        r.checked = (savedVal !== null && r.value === savedVal);
                     }
                 } else {
-                    const input = document.querySelector(`input[name="q${q}"]`);
-                    if (input) input.value = savedVal;
+                    // Text inputs — uses ID selector now!
+                    const input = document.getElementById(`input_q${q}`);
+                    if (input && savedVal !== null) {
+                        input.value = savedVal;
+                    }
                 }
             }
             updateStatus();
@@ -749,7 +761,7 @@
             
             updateStatus();
         }
-        // ✅ Initialize
+        // ✅ Initialize — load answers AFTER page is fully ready
         window.onload = function() {
             initQuestionNav();
             loadAnswers();
