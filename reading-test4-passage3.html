@@ -1,60 +1,760 @@
-<h2>Questions 31–36</h2>
-<p class="instructions">Complete the summary using the list of phrases, A–J, below. Write the correct letter, A–J, in boxes 31–36 on your answer sheet.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Test 4 — Passage 3</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+        body {
+            background-color: #f0f4f8;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+        .logo-container {
+            width: 100%;
+            background: #ffffff;
+            border-bottom: 2px solid #1f3a5f;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 6px rgba(31, 58, 95, 0.12);
+        }
+        .logo {
+            width: 35%;
+            max-width: 320px;
+            height: auto;
+            display: block;
+        }
+        .main-wrapper {
+            display: flex;
+            gap: 18px;
+            padding: 0 18px 12px;
+            height: calc(100vh - 120px);
+        }
+        .passage-column, .questions-column {
+            flex: 1;
+            background: #ffffff;
+            border-radius: 10px;
+            border: 1px solid #c5d2e3;
+            padding: 18px;
+            overflow-y: auto;
+            box-shadow: 0 2px 8px rgba(31, 58, 95, 0.07);
+            position: relative;
+        }
+        h1 {
+            color: #1f3a5f;
+            font-size: 19px;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+        .author {
+            text-align: center;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 14px;
+            font-size: 14px;
+        }
+        .passage-text h2 {
+            color: #1f3a5f;
+            font-size: 16px;
+            margin: 16px 0 8px;
+        }
+        .passage-text p {
+            margin-bottom: 12px;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+        .footnote {
+            font-size: 12px;
+            color: #666;
+            margin-top: 16px;
+            font-style: italic;
+        }
+        .highlight {
+            background-color: #ffd700;
+            padding: 2px 4px;
+            border-radius: 2px;
+            cursor: pointer;
+            color: #000;
+            display: inline;
+        }
+        .questions-section h2 {
+            color: #1f3a5f;
+            font-size: 17px;
+            margin: 15px 0 8px;
+        }
+        .question-block {
+            margin-bottom: 16px;
+            scroll-margin-top: 15px;
+        }
+        .question-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+        .flag-btn {
+            font-size: 17px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.2s;
+            user-select: none;
+        }
+        .flag-btn.flagged {
+            color: #fd7e14;
+        }
+        .question-block p {
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .options label {
+            display: block;
+            margin-left: 15px;
+            margin-bottom: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .answer-input {
+            width: 100%;
+            padding: 6px 10px;
+            border: 1px solid #c5d2e3;
+            border-radius: 6px;
+            font-size: 14px;
+            background: #f0f4f8;
+        }
+        .summary-box {
+            border: 1px solid #333;
+            padding: 16px;
+            margin: 10px 0;
+            background: #f9fafc;
+        }
+        .summary-box h3 {
+            text-align: center;
+            font-size: 15px;
+            margin-bottom: 12px;
+            color: #1f3a5f;
+        }
+        .phrase-list {
+            border: 1px solid #333;
+            padding: 12px;
+            margin-top: 10px;
+            background: #f9fafc;
+        }
+        .phrase-list p {
+            margin: 4px 0;
+            font-size: 14px;
+        }
+        .instructions {
+            font-size: 13px;
+            color: #444;
+            margin: 6px 0 10px;
+            font-style: italic;
+        }
+        .ynotable {
+            margin: 8px 0 12px 15px;
+            font-weight: 500;
+            font-size: 13px;
+        }
+        .context-menu {
+            position: absolute;
+            background: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            z-index: 9999;
+            display: none;
+            min-width: 140px;
+        }
+        .context-menu div {
+            padding: 8px 11px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .context-menu div:hover {
+            background: #f0f4f8;
+        }
+        .sticky-note {
+            position: absolute;
+            width: 160px;
+            min-height: 60px;
+            background: #fff380;
+            border: 1px solid #e6c200;
+            border-radius: 4px;
+            padding: 6px;
+            box-shadow: 2px 2px 7px rgba(0,0,0,0.15);
+            z-index: 9998;
+            font-size: 12px;
+            user-select: none;
+        }
+        .note-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            margin-bottom: 4px;
+            font-size: 11px;
+            color: #886a00;
+            cursor: move;
+        }
+        .note-close {
+            cursor: pointer;
+            font-weight: bold;
+            color: #886a00;
+            user-select: none;
+        }
+        .note-textarea {
+            width: 100%;
+            height: 44px;
+            border: none;
+            background: transparent;
+            resize: none;
+            outline: none;
+            font-family: inherit;
+            font-size: 12px;
+            user-select: text;
+        }
+        .bottom-container {
+            margin: 10px 18px 20px;
+            padding: 10px 12px;
+            background: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #c5d2e3;
+            box-shadow: 0 -2px 5px rgba(31, 58, 95, 0.07);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .question-nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 5px;
+        }
+        .nav-label {
+            font-weight: 600;
+            color: #1f3a5f;
+            font-size: 13px;
+            margin-right: 4px;
+        }
+        .q-indicator {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3px;
+            border: 1px solid #ddd;
+            background: #e5e7eb !important;
+            color: #333;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .q-indicator:hover {
+            opacity: 0.9;
+        }
+        .q-indicator.answered {
+            background: #10b981 !important;
+            color: white !important;
+            border-color: #10b981 !important;
+        }
+        .q-indicator.flagged {
+            background: #fd7e14 !important;
+            color: white !important;
+            border-color: #fd7e14 !important;
+        }
+        .q-indicator.answered.flagged {
+            background: #fd7e14 !important;
+            border-color: #fd7e14 !important;
+        }
+        .q-indicator.current {
+            border: 2px solid #1f3a5f !important;
+        }
+        .bottom-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .clear-answers {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 13px;
+            background: #6b7280;
+            color: white;
+        }
+        .clear-answers:hover {
+            background: #4b5563;
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .back-btn, .next-btn {
+            padding: 6px 12px;
+            background: #f0f4f8;
+            color: #1f3a5f;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid #c5d2e3;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 13px;
+            position: relative;
+            z-index: 9999;
+        }
+        .back-btn:hover, .next-btn:hover {
+            background: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="ielts-logo.png" alt="IELTS Logo" class="logo">
+    </div>
+    <div class="context-menu" id="contextMenu">
+        <div id="menuHighlight">✅ Highlight</div>
+        <div id="menuRemove">❌ Remove Highlight</div>
+        <div id="menuNote">📝 Add Note</div>
+    </div>
+    <div class="main-wrapper">
+        <div class="passage-column" id="passageArea">
+            <h1>Reading Passage 3 — Alfred Wegener: science, exploration and the theory of continental drift</h1>
+            <p class="author">by Mott T Greene</p>
+            <div class="passage-text">
+                <p style="font-style:italic; color:#555;">You should spend about 20 minutes on Questions 27–40, which are based on Reading Passage 3 below.</p>
+                <h2>Introduction</h2>
+                <p>This is a book about the life and scientific work of Alfred Wegener, whose reputation today rests with his theory of continental displacements, better known as 'continental drift'. Wegener proposed this theory in 1912 and developed it extensively for nearly 20 years. His book on the subject, <em>The Origin of Continents and Oceans</em>, went through four editions and was the focus of an international controversy in his lifetime and for some years after his death.</p>
+                <p>Wegener's basic idea was that many mysteries about the Earth's history could be solved if one supposed that the continents moved laterally, rather than supposing that they remained fixed in place. Wegener showed in great detail how such continental movements were plausible and how they worked, using evidence from a large number of sciences including geology, geophysics, paleontology, and climatology. Wegener's idea – that the continents move – is at the heart of the theory that guides Earth sciences today: namely plate tectonics. Plate tectonics is in many respects quite different from Wegener's proposal, in the same way that modern evolutionary theory is very different from the ideas Charles Darwin proposed in the 1850s about biological evolution. Yet plate tectonics is a descendant of Alfred Wegener's theory of continental drift, in quite the same way that modern evolutionary theory is a descendant of Darwin's theory of natural selection.</p>
+                <p>When I started writing about Wegener's life and work, one of the most intriguing things about him for me was that, although he came up with a theory on continental drift, he was not a geologist. He trained as an astronomer and pursued a career in atmospheric physics. When he proposed the theory of continental displacements in 1912, he was a lecturer in physics and astronomy at the University of Marburg, in southern Germany. However, he was not an 'unknown'. In 1906 he had set a world record (with his brother Kurt) for time aloft in a hot-air balloon: 52 hours. Between 1906 and 1908 he had taken part in a highly publicized and extremely dangerous expedition to the coast of northeast Greenland. He had also made a name for himself amongst a small circle of meteorologists and atmospheric physicists in Germany as the author of a textbook, <em>Thermodynamics of the Atmosphere</em> (1911), and of a number of interesting scientific papers.</p>
+                <p>As important as Wegener's work on continental drift has turned out to be, it was largely a sideline to his interest in atmospheric physics, geophysics, and paleoclimatology*, and thus I have been at great pains to put Wegener's work on continental drift in the larger context of his other scientific work, and in the even larger context of atmospheric sciences in his lifetime. This is a 'continental drift book' only to the extent that Wegener was interested in that topic and later became famous for it. My treatment of his other scientific work is no less detailed, though I certainly have devoted more attention to the reception of his ideas on continental displacement, as they were much more controversial than his other work.</p>
+                <p>Readers interested in the specific detail of Wegener's career will see that he often stopped pursuing a given line of investigation (sometimes for years on end), only to pick it up later. I have tried to provide guideposts to his rapidly shifting interests by characterizing different phases of his life as careers in different sciences, which is reflected in the titles of the chapters. Thus, the index should be a sufficient guide for those interested in a particular aspect of Wegener's life but perhaps not all of it. My own feeling, however, is that the parts do not make as much sense on their own as do all of his activities taken together. In this respect I urge readers to try to experience Wegener's life as he lived it, with all the interruptions, changes of mind, and renewed efforts this entailed.</p>
+                <p>Wegener left behind a few published works but, as was standard practice, these reported the results of his work – not the journey he took to reach that point. Only a few hundred of the many thousands of letters he wrote and received in his lifetime have survived and he didn't keep notebooks or diaries that recorded his life and activities. He was not active (with a few exceptions) in scientific societies, and did not seek to find influence or advance his ideas through professional contacts and politics, spending most of his time at home in his study reading and writing, or in the field collecting observations.</p>
+                <p>Some famous scientists, such as Newton, Darwin, and Einstein, left mountains of written material behind, hundreds of notebooks and letters numbering in the tens of thousands. Others, like Michael Faraday, left extensive journals of their thoughts and speculations, parallel to their scientific notebooks. The more such material a scientist leaves behind, the better chance a biographer has of forming an accurate picture of how a scientist's ideas took shape and evolved.</p>
+                <p>I am firmly of the opinion that most of us, Wegener included, are not in any real sense the authors of our own lives. We plan, think, and act, often with apparent freedom, but most of the time our lives 'happen to us', and we only retrospectively turn this happenstance into a coherent narrative of fulfilled intentions. This book, therefore, is a story both of the life and scientific work that Alfred Wegener planned and intended and of the life and scientific work that actually 'happened to him'. These are, as I think you will soon see, not always the same thing.</p>
+                <p class="footnote">* Paleoclimatology – The study of past climates</p>
+            </div>
+        </div>
+        <div class="questions-column" id="questionsArea">
+            <div class="questions-section">
+                <h2>Questions 27–30</h2>
+                <p class="instructions">Do the following statements agree with the claims of the writer in Reading Passage 3? In boxes 27–30 on your answer sheet, write</p>
+                <div class="ynotable">
+                    YES &nbsp; &nbsp; if the statement agrees with the claims of the writer<br>
+                    NO &nbsp; &nbsp; if the statement contradicts the claims of the writer<br>
+                    NOT GIVEN &nbsp; if it is impossible to say what the writer thinks about this
+                </div>
+                <div class="question-block" id="q27">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(27)" id="flag27">🚩</span>
+                        <p><strong>27.</strong> Wegener's ideas about continental drift were widely disputed while he was alive.</p>
+                    </div>
+                    <input type="text" class="answer-input" name="q27" placeholder="YES / NO / NOT GIVEN">
+                </div>
+                <div class="question-block" id="q28">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(28)" id="flag28">🚩</span>
+                        <p><strong>28.</strong> The idea that the continents remained fixed in place was defended in a number of respected scientific publications.</p>
+                    </div>
+                    <input type="text" class="answer-input" name="q28" placeholder="YES / NO / NOT GIVEN">
+                </div>
+                <div class="question-block" id="q29">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(29)" id="flag29">🚩</span>
+                        <p><strong>29.</strong> Wegener relied on a limited range of scientific fields to support his theory of continental drift.</p>
+                    </div>
+                    <input type="text" class="answer-input" name="q29" placeholder="YES / NO / NOT GIVEN">
+                </div>
+                <div class="question-block" id="q30">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(30)" id="flag30">🚩</span>
+                        <p><strong>30.</strong> The similarities between Wegener's theory of continental drift and modern-day plate tectonics are enormous.</p>
+                    </div>
+                    <input type="text" class="answer-input" name="q30" placeholder="YES / NO / NOT GIVEN">
+                </div>
 
-<div class="summary-box">
-    <h3>Wegener's life and work</h3>
-    <p>One of the remarkable things about Wegener from a 31 .............................. is that although he proposed a theory of continental drift, he was not a geologist. His 32 .............................. were limited to atmospheric physics. However, at the time he proposed his theory of continental drift in 1912, he was already a person of 33 .............................. . Six years previously, there had been his 34 .............................. of 52 hours in a hot-air balloon, followed by his well-publicised but 35 .............................. of Greenland's coast. With the publication of his textbook on thermodynamics, he had also come to the attention of a 36 .............................. of German scientists.</p>
-</div>
+                <h2>Questions 31–36</h2>
+                <p class="instructions">Complete the summary using the list of phrases, A–J, below. Write the correct letter, A–J, in boxes 31–36 on your answer sheet.</p>
+                <div class="summary-box">
+                    <h3>Wegener's life and work</h3>
+                    <p>One of the remarkable things about Wegener from a 31 .............................. is that although he proposed a theory of continental drift, he was not a geologist. His 32 .............................. were limited to atmospheric physics. However, at the time he proposed his theory of continental drift in 1912, he was already a person of 33 .............................. . Six years previously, there had been his 34 .............................. of 52 hours in a hot-air balloon, followed by his well-publicised but 35 .............................. of Greenland's coast. With the publication of his textbook on thermodynamics, he had also come to the attention of a 36 .............................. of German scientists.</p>
+                </div>
+                <div class="phrase-list">
+                    <p><strong>A</strong> modest fame &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>B</strong> vast range</p>
+                    <p><strong>C</strong> record-breaking achievement &nbsp; <strong>D</strong> research methods</p>
+                    <p><strong>E</strong> select group &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>F</strong> professional interests</p>
+                    <p><strong>G</strong> scientific debate &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>H</strong> hazardous exploration</p>
+                    <p><strong>I</strong> biographer's perspective &nbsp; &nbsp; <strong>J</strong> narrow investigation</p>
+                </div>
 
-<div class="phrase-list">
-    <p><strong>A</strong> modest fame &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>B</strong> vast range</p>
-    <p><strong>C</strong> record-breaking achievement &nbsp; <strong>D</strong> research methods</p>
-    <p><strong>E</strong> select group &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>F</strong> professional interests</p>
-    <p><strong>G</strong> scientific debate &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>H</strong> hazardous exploration</p>
-    <p><strong>I</strong> biographer's perspective &nbsp; &nbsp; <strong>J</strong> narrow investigation</p>
-</div>
+                <div class="question-block" id="q31">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(31)" id="flag31">🚩</span>
+                        <p><strong>31.</strong> ..............................</p>
+                    </div>
+                    <input type="text" class="answer-input" name="q31" placeholder="Write A–J">
+                </div>
+                <div class="question-block" id="q32">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(32)" id="flag32">🚩</span>
+                        <p><strong>32.</strong> ..............................</p>
+                    </div>
+                    <input type="text" class="answer-input" name="q32" placeholder="Write A–J">
+                </div>
+                <div class="question-block" id="q33">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(33)" id="flag33">🚩</span>
+                        <p><strong>33.</strong> ..............................</p>
+                    </div>
+                    <input type="text" class="answer-input" name="q33" placeholder="Write A–J">
+                </div>
+                <div class="question-block" id="q34">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(34)" id="flag34">🚩</span>
+                        <p><strong>34.</strong> ..............................</p>
+                    </div>
+                    <input type="text" class="answer-input" name="q34" placeholder="Write A–J">
+                </div>
+                <div class="question-block" id="q35">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(35)" id="flag35">🚩</span>
+                        <p><strong>35.</strong> ..............................</p>
+                    </div>
+                    <input type="text" class="answer-input" name="q35" placeholder="Write A–J">
+                </div>
+                <div class="question-block" id="q36">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(36)" id="flag36">🚩</span>
+                        <p><strong>36.</strong> ..............................</p>
+                    </div>
+                    <input type="text" class="answer-input" name="q36" placeholder="Write A–J">
+                </div>
 
-<p class="instructions">Write the correct letter A–J in spaces 31–36 below.</p>
+                <h2>Questions 37–40</h2>
+                <p class="instructions">Choose the correct letter, A, B, C or D. Write the correct letter in boxes 37–40 on your answer sheet.</p>
+                <div class="question-block" id="q37">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(37)" id="flag37">🚩</span>
+                        <p><strong>37.</strong> What is Mott T Greene doing in the fifth paragraph?</p>
+                    </div>
+                    <div class="options">
+                        <label><input type="radio" name="q37" value="A"> A describing what motivated him to write the book</label>
+                        <label><input type="radio" name="q37" value="B"> B explaining why it is desirable to read the whole book</label>
+                        <label><input type="radio" name="q37" value="C"> C suggesting why Wegener pursued so many different careers</label>
+                        <label><input type="radio" name="q37" value="D"> D indicating what aspects of Wegener's life interested him most</label>
+                    </div>
+                </div>
+                <div class="question-block" id="q38">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(38)" id="flag38">🚩</span>
+                        <p><strong>38.</strong> What is said about Wegener in the sixth paragraph?</p>
+                    </div>
+                    <div class="options">
+                        <label><input type="radio" name="q38" value="A"> A He was not a particularly ambitious person.</label>
+                        <label><input type="radio" name="q38" value="B"> B He kept a record of all his scientific observations.</label>
+                        <label><input type="radio" name="q38" value="C"> C He did not adopt many of the scientific practices of the time.</label>
+                        <label><input type="radio" name="q38" value="D"> D He enjoyed discussing new discoveries with other scientists.</label>
+                    </div>
+                </div>
+                <div class="question-block" id="q39">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(39)" id="flag39">🚩</span>
+                        <p><strong>39.</strong> What does Greene say about some other famous scientists?</p>
+                    </div>
+                    <div class="options">
+                        <label><input type="radio" name="q39" value="A"> A Their published works had a greater impact than Wegener's did.</label>
+                        <label><input type="radio" name="q39" value="B"> B They had fewer doubts about their scientific ideas than Wegener's.</label>
+                        <label><input type="radio" name="q39" value="C"> C Their scientific ideas were more controversial than Wegener's.</label>
+                        <label><input type="radio" name="q39" value="D"> D They are easier subjects to write about than Wegener.</label>
+                    </div>
+                </div>
+                <div class="question-block" id="q40">
+                    <div class="question-header">
+                        <span class="flag-btn" onclick="toggleFlag(40)" id="flag40">🚩</span>
+                        <p><strong>40.</strong> What is Greene's main point in the final paragraph?</p>
+                    </div>
+                    <div class="options">
+                        <label><input type="radio" name="q40" value="A"> A It is not enough in life to have good intentions.</label>
+                        <label><input type="radio" name="q40" value="B"> B People need to plan carefully if they want to succeed.</label>
+                        <label><input type="radio" name="q40" value="C"> C People have little control over many aspects of their lives.</label>
+                        <label><input type="radio" name="q40" value="D"> D It is important that people ensure they have the freedom to act.</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-container">
+        <div class="question-nav" id="questionNav">
+            <span class="nav-label">Questions:</span>
+        </div>
+        <div class="bottom-controls">
+            <div class="action-buttons">
+                <button class="clear-answers" onclick="clearAllAnswers()">🗑️ Clear All Answers</button>
+            </div>
+            <div class="nav-buttons">
+                <a href="reading-test4-passage2.html" class="back-btn">← Previous</a>
+                <a href="writing-intro.html" class="next-btn">Next →</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        const READING_STORAGE_KEY = 'Reading_Test';
+        const passageId = 'reading-test4-passage3';
+        const TOTAL_QUESTIONS = 40;
+        const Q_START = 27;
+        const Q_END = 40;
 
-<div class="question-block" id="q31">
-    <div class="question-header">
-        <span class="flag-btn" onclick="toggleFlag(31)" id="flag31">🚩</span>
-        <p><strong>31.</strong> ..............................</p>
-    </div>
-    <input type="text" class="answer-input" name="q31" placeholder="Write A–J">
-</div>
-<div class="question-block" id="q32">
-    <div class="question-header">
-        <span class="flag-btn" onclick="toggleFlag(32)" id="flag32">🚩</span>
-        <p><strong>32.</strong> ..............................</p>
-    </div>
-    <input type="text" class="answer-input" name="q32" placeholder="Write A–J">
-</div>
-<div class="question-block" id="q33">
-    <div class="question-header">
-        <span class="flag-btn" onclick="toggleFlag(33)" id="flag33">🚩</span>
-        <p><strong>33.</strong> ..............................</p>
-    </div>
-    <input type="text" class="answer-input" name="q33" placeholder="Write A–J">
-</div>
-<div class="question-block" id="q34">
-    <div class="question-header">
-        <span class="flag-btn" onclick="toggleFlag(34)" id="flag34">🚩</span>
-        <p><strong>34.</strong> ..............................</p>
-    </div>
-    <input type="text" class="answer-input" name="q34" placeholder="Write A–J">
-</div>
-<div class="question-block" id="q35">
-    <div class="question-header">
-        <span class="flag-btn" onclick="toggleFlag(35)" id="flag35">🚩</span>
-        <p><strong>35.</strong> ..............................</p>
-    </div>
-    <input type="text" class="answer-input" name="q35" placeholder="Write A–J">
-</div>
-<div class="question-block" id="q36">
-    <div class="question-header">
-        <span class="flag-btn" onclick="toggleFlag(36)" id="flag36">🚩</span>
-        <p><strong>36.</strong> ..............................</p>
-    </div>
-    <input type="text" class="answer-input" name="q36" placeholder="Write A–J">
-</div>
+        let currentRange = null;
+        let lastNoteId = 0;
+        let dragNote = null;
+        let dragOffsetX = 0;
+        let dragOffsetY = 0;
+
+        function initQuestionNav() {
+            const navContainer = document.getElementById('questionNav');
+            for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
+                const btn = document.createElement('div');
+                btn.className = 'q-indicator';
+                btn.textContent = i;
+                btn.id = 'stat' + i;
+                btn.onclick = () => jumpToQuestion(i);
+                navContainer.appendChild(btn);
+            }
+            updateStatus();
+        }
+
+        function jumpToQuestion(qNum) {
+            document.querySelectorAll('.q-indicator').forEach(el => el.classList.remove('current'));
+            document.getElementById('stat' + qNum)?.classList.add('current');
+            document.getElementById('q' + qNum)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function toggleFlag(qNum) {
+            const flag = document.getElementById('flag' + qNum);
+            const stat = document.getElementById('stat' + qNum);
+            const isFlagged = flag.classList.toggle('flagged');
+            stat.classList.toggle('flagged', isFlagged);
+            localStorage.setItem(`${passageId}_flag_${qNum}`, isFlagged);
+        }
+
+        function isSelectionValid(selection) {
+            if (!selection || selection.isCollapsed || !selection.toString().trim()) return false;
+            try {
+                const range = selection.getRangeAt(0);
+                const container = range.commonAncestorContainer;
+                const parent = container.nodeType === Node.TEXT_NODE ? container.parentElement : container;
+                const inPassage = document.getElementById('passageArea').contains(parent);
+                const inQuestions = document.getElementById('questionsArea').contains(parent);
+                const inInput = parent.closest('input, textarea, button, .note-close, label input') !== null;
+                return (inPassage || inQuestions) && !inInput;
+            } catch { return false; }
+        }
+
+        const contextMenu = document.getElementById('contextMenu');
+        document.addEventListener('contextmenu', e => {
+            const selection = window.getSelection();
+            if (!isSelectionValid(selection)) { contextMenu.style.display = 'none'; return; }
+            e.preventDefault();
+            currentRange = selection.getRangeAt(0).cloneRange();
+            const rect = currentRange.getBoundingClientRect();
+            contextMenu.style.left = (rect.left + window.scrollX) + 'px';
+            contextMenu.style.top = (rect.bottom + window.scrollY + 5) + 'px';
+            contextMenu.style.display = 'block';
+        });
+        document.addEventListener('click', () => contextMenu.style.display = 'none');
+
+        document.getElementById('menuHighlight').addEventListener('click', () => {
+            if (!currentRange) return;
+            try {
+                const span = document.createElement('span');
+                span.className = 'highlight';
+                span.textContent = currentRange.toString();
+                currentRange.deleteContents();
+                currentRange.insertNode(span);
+                window.getSelection().removeAllRanges();
+                currentRange = null;
+                saveHighlights();
+            } catch { alert('Please select a smaller piece of text.'); }
+        });
+
+        document.getElementById('menuRemove').addEventListener('click', () => {
+            if (!currentRange) return;
+            try {
+                const getEl = node => node.nodeType === Node.TEXT_NODE ? node.parentElement : node;
+                const startEl = getEl(currentRange.startContainer);
+                const endEl = getEl(currentRange.endContainer);
+                const target = startEl.closest('.highlight') || endEl.closest('.highlight');
+                if (target) {
+                    const parent = target.parentNode;
+                    parent.replaceChild(document.createTextNode(target.textContent), target);
+                    parent.normalize();
+                }
+            } catch (e) { console.log(e); }
+            window.getSelection().removeAllRanges();
+            currentRange = null;
+            saveHighlights();
+        });
+
+        document.getElementById('menuNote').addEventListener('click', () => {
+            if (!currentRange) return;
+            const rect = currentRange.getBoundingClientRect();
+            const noteId = 'note_' + (++lastNoteId);
+            const note = document.createElement('div');
+            note.className = 'sticky-note';
+            note.id = noteId;
+            note.innerHTML = `<div class="note-header" onmousedown="startDrag(event, '${noteId}')">Note <span class="note-close" onclick="closeNote('${noteId}')">×</span></div><textarea class="note-textarea" placeholder="Type your note..." oninput="saveNotes()"></textarea>`;
+            note.style.left = (rect.right + window.scrollX + 8) + 'px';
+            note.style.top = (rect.top + window.scrollY) + 'px';
+            document.body.appendChild(note);
+            window.getSelection().removeAllRanges();
+            currentRange = null;
+            saveNotes();
+        });
+
+        window.startDrag = function(e, noteId) {
+            dragNote = document.getElementById(noteId);
+            const rect = dragNote.getBoundingClientRect();
+            dragOffsetX = e.clientX - rect.left;
+            dragOffsetY = e.clientY - rect.top;
+            dragNote.style.zIndex = '10000';
+            e.preventDefault();
+        };
+        document.addEventListener('mousemove', e => {
+            if (!dragNote) return;
+            dragNote.style.left = (e.pageX - dragOffsetX) + 'px';
+            dragNote.style.top = (e.pageY - dragOffsetY) + 'px';
+        });
+        document.addEventListener('mouseup', () => {
+            if (dragNote) { dragNote.style.zIndex = '9998'; dragNote = null; saveNotes(); }
+        });
+        window.closeNote = id => document.getElementById(id)?.remove() && saveNotes();
+
+        function saveHighlights() {
+            localStorage.setItem(`${passageId}_passage_highlights`, document.getElementById('passageArea').innerHTML);
+        }
+        function loadHighlights() {
+            const saved = localStorage.getItem(`${passageId}_passage_highlights`);
+            if (saved) document.getElementById('passageArea').innerHTML = saved;
+        }
+
+        function saveNotes() {
+            localStorage.setItem(`${passageId}_notes`, JSON.stringify(
+                Array.from(document.querySelectorAll('.sticky-note')).map(n => ({
+                    id: n.id, left: n.style.left, top: n.style.top,
+                    text: n.querySelector('.note-textarea').value
+                }))
+            ));
+        }
+        function loadNotes() {
+            const saved = localStorage.getItem(`${passageId}_notes`);
+            if (!saved) return;
+            JSON.parse(saved).forEach(n => {
+                const note = document.createElement('div');
+                note.className = 'sticky-note';
+                note.id = n.id;
+                note.innerHTML = `<div class="note-header" onmousedown="startDrag(event, '${n.id}')">Note <span class="note-close" onclick="closeNote('${n.id}')">×</span></div><textarea class="note-textarea">${n.text}</textarea>`;
+                note.style.left = n.left;
+                note.style.top = n.top;
+                document.body.appendChild(note);
+                const num = parseInt(n.id.split('_')[1]);
+                if (num > lastNoteId) lastNoteId = num;
+            });
+        }
+
+        function saveAnswers() {
+            for (let q = Q_START; q <= Q_END; q++) {
+                const textInput = document.querySelector(`input[name="q${q}"]`);
+                if (textInput && textInput.type === 'text') {
+                    localStorage.setItem(`${READING_STORAGE_KEY}_q${q}`, textInput.value.trim().toUpperCase());
+                }
+                document.querySelectorAll(`input[name="q${q}"]:checked`).forEach(r => {
+                    localStorage.setItem(`${READING_STORAGE_KEY}_q${q}`, r.value);
+                });
+            }
+            updateStatus();
+        }
+
+        function loadAnswers() {
+            for (let q = Q_START; q <= Q_END; q++) {
+                const savedVal = localStorage.getItem(`${READING_STORAGE_KEY}_q${q}`);
+                if (!savedVal) continue;
+                const radio = document.querySelector(`input[name="q${q}"][value="${savedVal}"]`);
+                if (radio) radio.checked = true;
+                else {
+                    const input = document.querySelector(`input[name="q${q}"]`);
+                    if (input) input.value = savedVal;
+                }
+            }
+            updateStatus();
+        }
+
+        function updateStatus() {
+            for (let q = 1; q <= TOTAL_QUESTIONS; q++) {
+                const statBtn = document.getElementById('stat' + q);
+                if (!statBtn) continue;
+                const val = (localStorage.getItem(`${READING_STORAGE_KEY}_q${q}`) || '').trim().toUpperCase();
+                const hasAnswer = val.length > 0;
+                const isFlagged = localStorage.getItem(`${passageId}_flag_${q}`) === 'true';
+                statBtn.classList.remove('answered', 'flagged');
+                if (isFlagged) statBtn.classList.add('flagged');
+                else if (hasAnswer) statBtn.classList.add('answered');
+                document.getElementById('flag' + q)?.classList.toggle('flagged', isFlagged);
+            }
+        }
+
+        window.clearAllAnswers = function () {
+            if (!confirm('⚠️ This will clear ALL answers, flags, highlights and notes for this passage. Continue?')) return;
+            document.querySelectorAll('.answer-input').forEach(i => i.value = '');
+            document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+            document.querySelectorAll('.flag-btn').forEach(f => f.classList.remove('flagged'));
+            document.querySelectorAll('.highlight').forEach(s => {
+                const p = s.parentNode;
+                p.replaceChild(document.createTextNode(s.textContent), s);
+                p.normalize();
+            });
+            document.querySelectorAll('.sticky-note').forEach(n => n.remove());
+            for (let q = Q_START; q <= Q_END; q++) {
+                localStorage.removeItem(`${READING_STORAGE_KEY}_q${q}`);
+                localStorage.removeItem(`${passageId}_flag_${q}`);
+            }
+            localStorage.removeItem(`${passageId}_passage_highlights`);
+            localStorage.removeItem(`${passageId}_notes`);
+            updateStatus();
+        };
+
+        document.addEventListener('input', e => {
+            if (e.target.name?.startsWith('q') || e.target.classList.contains('note-textarea')) {
+                saveAnswers();
+                if (e.target.classList.contains('note-textarea')) saveNotes();
+            }
+        });
+
+        window.onload = function () {
+            initQuestionNav();
+            loadHighlights();
+            loadAnswers();
+            loadNotes();
+        };
+    </script>
+</body>
+</html>
