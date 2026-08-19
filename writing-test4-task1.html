@@ -52,15 +52,17 @@
         }
         .split-layout {
             display: flex;
-            min-height: 720px; /* ✅ Taller panel = bigger graph */
+            align-items: stretch; /* ✅ BOTH SIDES SAME HEIGHT */
+            gap: 0;
         }
         .question-panel {
             width: 48%;
-            padding: 20px 25px 35px; /* ✅ More space at bottom */
+            padding: 20px 25px 25px;
             background-color: #fefefe;
             border-right: 1px solid #e2e8f0;
             overflow-y: auto;
-            max-height: calc(100vh - 200px); /* ✅ More vertical room */
+            display: flex;
+            flex-direction: column;
         }
         .question-panel h2 {
             font-size: 20px;
@@ -72,15 +74,17 @@
             border: 1px solid #c5d2e3;
             background: #f8fafc;
             padding: 18px;
-            margin: 0 0 30px; /* ✅ More space between text and graph */
+            margin: 0 0 20px;
             font-size: 15px;
             border-radius: 6px;
         }
         .task-image {
             display: block;
-            max-width: 100%;
+            width: 100%; /* ✅ FULL WIDTH */
             height: auto;
-            margin: 15px auto 0; /* ✅ Pushes graph DOWN */
+            flex: 1; /* ✅ GRAPH TAKES ALL REMAINING HEIGHT */
+            object-fit: contain;
+            margin: 0 auto;
             border: 1px solid #e2e8f0;
             border-radius: 4px;
             background: #fff;
@@ -93,7 +97,8 @@
         }
         textarea {
             width: 100%;
-            min-height: 520px; /* ✅ Taller writing area to match */
+            flex: 1; /* ✅ SAME HEIGHT as left side */
+            min-height: 550px;
             padding: 18px;
             border: 1px solid #c5d2e3;
             border-radius: 6px;
@@ -188,7 +193,6 @@
                 width: 100%;
                 border-right: none;
                 border-bottom: 1px solid #e2e8f0;
-                max-height: none;
             }
             textarea {
                 min-height: 300px;
