@@ -368,35 +368,35 @@
                         <span class="flag-btn" onclick="toggleFlag(1)" id="flag1">🚩</span>
                         <p><strong>1.</strong> mention of several challenges to be overcome before a green roof can be installed</p>
                     </div>
-                    <input type="text" class="answer-input" id="input_q1" name="q1" placeholder="A–E" oninput="saveAnswers()">
+                    <input type="text" class="answer-input" id="q1_input" placeholder="A–E">
                 </div>
                 <div class="question-block" id="q2">
                     <div class="question-header">
                         <span class="flag-btn" onclick="toggleFlag(2)" id="flag2">🚩</span>
                         <p><strong>2.</strong> reference to a city where green roofs have been promoted for many years</p>
                     </div>
-                    <input type="text" class="answer-input" id="input_q2" name="q2" placeholder="A–E" oninput="saveAnswers()">
+                    <input type="text" class="answer-input" id="q2_input" placeholder="A–E">
                 </div>
                 <div class="question-block" id="q3">
                     <div class="question-header">
                         <span class="flag-btn" onclick="toggleFlag(3)" id="flag3">🚩</span>
                         <p><strong>3.</strong> a belief that existing green roofs should be used as a model for new ones</p>
                     </div>
-                    <input type="text" class="answer-input" id="input_q3" name="q3" placeholder="A–E" oninput="saveAnswers()">
+                    <input type="text" class="answer-input" id="q3_input" placeholder="A–E">
                 </div>
                 <div class="question-block" id="q4">
                     <div class="question-header">
                         <span class="flag-btn" onclick="toggleFlag(4)" id="flag4">🚩</span>
                         <p><strong>4.</strong> examples of how green roofs can work in combination with other green urban initiatives</p>
                     </div>
-                    <input type="text" class="answer-input" id="input_q4" name="q4" placeholder="A–E" oninput="saveAnswers()">
+                    <input type="text" class="answer-input" id="q4_input" placeholder="A–E">
                 </div>
                 <div class="question-block" id="q5">
                     <div class="question-header">
                         <span class="flag-btn" onclick="toggleFlag(5)" id="flag5">🚩</span>
                         <p><strong>5.</strong> the need to make a persuasive argument for the financial benefits of green roofs</p>
                     </div>
-                    <input type="text" class="answer-input" id="input_q5" name="q5" placeholder="A–E" oninput="saveAnswers()">
+                    <input type="text" class="answer-input" id="q5_input" placeholder="A–E">
                 </div>
                 <h2>Questions 6–9</h2>
                 <div class="instruction">
@@ -406,16 +406,16 @@
                 <div class="summary-box">
                     <p>City rooftops covered with greenery have many advantages. These include lessening the likelihood that floods will occur, reducing how much money is spent on
                     <span class="summary-q">6</span>
-                    <input type="text" class="summary-input" id="input_q6" name="q6" placeholder="" oninput="saveAnswers()">
+                    <input type="text" class="summary-input" id="q6_input" placeholder="">
                     and creating environments that are suitable for wildlife. In many cases, they can also be used for producing
                     <span class="summary-q">7</span>
-                    <input type="text" class="summary-input" id="input_q7" name="q7" placeholder="" oninput="saveAnswers()">.</p>
+                    <input type="text" class="summary-input" id="q7_input" placeholder="">.</p>
                     <p style="margin-top:12px;">There are also social benefits of green roofs. For example, the medical profession recommends
                     <span class="summary-q">8</span>
-                    <input type="text" class="summary-input" id="input_q8" name="q8" placeholder="" oninput="saveAnswers()">
+                    <input type="text" class="summary-input" id="q8_input" placeholder="">
                     as an activity to help people cope with mental health issues. Studies have also shown that the availability of green spaces can prevent physical problems such as
                     <span class="summary-q">9</span>
-                    <input type="text" class="summary-input" id="input_q9" name="q9" placeholder="" oninput="saveAnswers()">.</p>
+                    <input type="text" class="summary-input" id="q9_input" placeholder="">.</p>
                 </div>
                 <h2>Questions 10–11</h2>
                 <div class="instruction">
@@ -428,11 +428,11 @@
                         <p><strong>10.</strong></p>
                     </div>
                     <div class="options">
-                        <label><input type="checkbox" name="q10" value="A" onchange="saveAnswers()"> A a longer growing season for edible produce</label>
-                        <label><input type="checkbox" name="q10" value="B" onchange="saveAnswers()"> B more economical use of water</label>
-                        <label><input type="checkbox" name="q10" value="C" onchange="saveAnswers()"> C greater water-storage capacity</label>
-                        <label><input type="checkbox" name="q10" value="D" onchange="saveAnswers()"> D ability to cultivate more plant types</label>
-                        <label><input type="checkbox" name="q10" value="E" onchange="saveAnswers()"> E a larger surface area for growing plants</label>
+                        <label><input type="checkbox" id="q10_optA" value="A"> A a longer growing season for edible produce</label>
+                        <label><input type="checkbox" id="q10_optB" value="B"> B more economical use of water</label>
+                        <label><input type="checkbox" id="q10_optC" value="C"> C greater water-storage capacity</label>
+                        <label><input type="checkbox" id="q10_optD" value="D"> D ability to cultivate more plant types</label>
+                        <label><input type="checkbox" id="q10_optE" value="E"> E a larger surface area for growing plants</label>
                     </div>
                 </div>
                 <h2>Questions 12–13</h2>
@@ -446,11 +446,11 @@
                         <p><strong>12.</strong></p>
                     </div>
                     <div class="options">
-                        <label><input type="checkbox" name="q12" value="A" onchange="saveAnswers()"> A to provide habitats for a wide range of species</label>
-                        <label><input type="checkbox" name="q12" value="B" onchange="saveAnswers()"> B to grow plants successfully even in the wettest climates</label>
-                        <label><input type="checkbox" name="q12" value="C" onchange="saveAnswers()"> C to regulate the temperature of the immediate environment</label>
-                        <label><input type="checkbox" name="q12" value="D" onchange="saveAnswers()"> D to generate power from a sustainable source</label>
-                        <label><input type="checkbox" name="q12" value="E" onchange="saveAnswers()"> E to collect water to supply other buildings</label>
+                        <label><input type="checkbox" id="q12_optA" value="A"> A to provide habitats for a wide range of species</label>
+                        <label><input type="checkbox" id="q12_optB" value="B"> B to grow plants successfully even in the wettest climates</label>
+                        <label><input type="checkbox" id="q12_optC" value="C"> C to regulate the temperature of the immediate environment</label>
+                        <label><input type="checkbox" id="q12_optD" value="D"> D to generate power from a sustainable source</label>
+                        <label><input type="checkbox" id="q12_optE" value="E"> E to collect water to supply other buildings</label>
                     </div>
                 </div>
             </div>
@@ -471,16 +471,120 @@
         </div>
     </div>
     <script>
-        const READING_STORAGE_KEY = 'Reading_Test';
-        const passageId = 'reading-test4-passage1';
-        const Q_START = 1;
-        const Q_END = 13;
+        const STORAGE_KEY = 'IELTS_R4_P1';
         const TOTAL_QUESTIONS = 40;
+
         let currentRange = null;
         let lastNoteId = 0;
         let dragNote = null;
         let dragOffsetX = 0;
         let dragOffsetY = 0;
+
+        // === Save Answers ===
+        function saveAnswers() {
+            // Text answers Q1–9
+            for (let q = 1; q <= 9; q++) {
+                const el = document.getElementById(`q${q}_input`);
+                if (el) {
+                    let val = el.value.trim().toUpperCase().replace(/[^A-Z]/g, '');
+                    localStorage.setItem(`${STORAGE_KEY}_q${q}`, val);
+                }
+            }
+            // Checkbox answers Q10–11
+            let q10vals = [];
+            ['A','B','C','D','E'].forEach(opt => {
+                const el = document.getElementById(`q10_opt${opt}`);
+                if (el && el.checked) q10vals.push(opt);
+            });
+            localStorage.setItem(`${STORAGE_KEY}_q10`, q10vals[0] || '');
+            localStorage.setItem(`${STORAGE_KEY}_q11`, q10vals[1] || '');
+
+            // Checkbox answers Q12–13
+            let q12vals = [];
+            ['A','B','C','D','E'].forEach(opt => {
+                const el = document.getElementById(`q12_opt${opt}`);
+                if (el && el.checked) q12vals.push(opt);
+            });
+            localStorage.setItem(`${STORAGE_KEY}_q12`, q12vals[0] || '');
+            localStorage.setItem(`${STORAGE_KEY}_q13`, q12vals[1] || '');
+
+            updateStatus();
+        }
+
+        // === Load Answers ===
+        function loadAnswers() {
+            // Text answers Q1–9
+            for (let q = 1; q <= 9; q++) {
+                const val = localStorage.getItem(`${STORAGE_KEY}_q${q}`) || '';
+                const el = document.getElementById(`q${q}_input`);
+                if (el) el.value = val;
+            }
+            // Checkbox Q10–11
+            const q10a = localStorage.getItem(`${STORAGE_KEY}_q10`);
+            const q10b = localStorage.getItem(`${STORAGE_KEY}_q11`);
+            ['A','B','C','D','E'].forEach(opt => {
+                const el = document.getElementById(`q10_opt${opt}`);
+                if (el) el.checked = (opt === q10a || opt === q10b);
+            });
+            // Checkbox Q12–13
+            const q12a = localStorage.getItem(`${STORAGE_KEY}_q12`);
+            const q12b = localStorage.getItem(`${STORAGE_KEY}_q13`);
+            ['A','B','C','D','E'].forEach(opt => {
+                const el = document.getElementById(`q12_opt${opt}`);
+                if (el) el.checked = (opt === q12a || opt === q12b);
+            });
+            updateStatus();
+        }
+
+        // === Update Status Dots ===
+        function updateStatus() {
+            for (let q = 1; q <= TOTAL_QUESTIONS; q++) {
+                const statBtn = document.getElementById('stat' + q);
+                if (!statBtn) continue;
+                const val = (localStorage.getItem(`${STORAGE_KEY}_q${q}`) || '').trim();
+                const hasAnswer = val.length > 0;
+                const isFlagged = localStorage.getItem(`${STORAGE_KEY}_flag${q}`) === 'true';
+
+                statBtn.classList.remove('answered', 'flagged');
+                if (isFlagged) statBtn.classList.add('flagged');
+                else if (hasAnswer) statBtn.classList.add('answered');
+
+                const flagIcon = document.getElementById('flag' + q);
+                if (flagIcon) flagIcon.classList.toggle('flagged', isFlagged);
+            }
+        }
+
+        // === Flag Toggle ===
+        function toggleFlag(qNum) {
+            const flag = document.getElementById('flag' + qNum);
+            const stat = document.getElementById('stat' + qNum);
+            const isFlagged = flag.classList.toggle('flagged');
+            stat.classList.toggle('flagged', isFlagged);
+            localStorage.setItem(`${STORAGE_KEY}_flag${qNum}`, isFlagged);
+        }
+
+        // === Clear All ===
+        function clearAllAnswers() {
+            if (!confirm('⚠️ This will clear ALL answers, flags, highlights and notes. Continue?')) return;
+            for (let q = 1; q <= 13; q++) {
+                localStorage.removeItem(`${STORAGE_KEY}_q${q}`);
+                localStorage.removeItem(`${STORAGE_KEY}_flag${q}`);
+            }
+            document.querySelectorAll('.answer-input, .summary-input').forEach(i => i.value = '');
+            document.querySelectorAll('input[type=checkbox]').forEach(cb => cb.checked = false);
+            document.querySelectorAll('.flag-btn').forEach(f => f.classList.remove('flagged'));
+            document.querySelectorAll('.highlight').forEach(s => {
+                const p = s.parentNode;
+                p.replaceChild(document.createTextNode(s.textContent), p);
+                p.normalize();
+            });
+            document.querySelectorAll('.sticky-note').forEach(n => n.remove());
+            localStorage.removeItem(`${STORAGE_KEY}_highlights`);
+            localStorage.removeItem(`${STORAGE_KEY}_notes`);
+            updateStatus();
+        }
+
+        // === Navigation ===
         function initQuestionNav() {
             const navContainer = document.getElementById('questionNav');
             for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
@@ -495,212 +599,94 @@
         }
         function jumpToQuestion(qNum) {
             document.querySelectorAll('.q-indicator').forEach(el => el.classList.remove('current'));
-            const btn = document.getElementById('stat' + qNum);
-            if (btn) btn.classList.add('current');
-            const el = document.getElementById('q' + qNum);
-            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            document.getElementById('stat'+qNum)?.classList.add('current');
+            document.getElementById('q'+qNum)?.scrollIntoView({behavior:'smooth', block:'start'});
         }
-        function toggleFlag(qNum) {
-            const flag = document.getElementById('flag' + qNum);
-            const stat = document.getElementById('stat' + qNum);
-            const isFlagged = flag.classList.toggle('flagged');
-            stat.classList.toggle('flagged', isFlagged);
-            localStorage.setItem(`${passageId}_flag_${qNum}`, isFlagged);
-        }
-        function isSelectionValid(selection) {
-            if (!selection || selection.isCollapsed || selection.toString().trim() === '') return false;
+
+        // === Highlight & Notes ===
+        function isSelectionValid(sel) {
+            if (!sel || sel.isCollapsed || !sel.toString().trim()) return false;
             try {
-                const range = selection.getRangeAt(0);
-                const container = range.commonAncestorContainer;
-                const parent = container.nodeType === Node.TEXT_NODE ? container.parentElement : container;
-                const inPassage = document.getElementById('passageArea').contains(parent);
-                const inQuestions = document.getElementById('questionsArea').contains(parent);
-                const inInput = parent.closest('input, textarea, button, .note-close, label input') !== null;
-                return (inPassage || inQuestions) && !inInput;
+                const r = sel.getRangeAt(0);
+                const p = r.commonAncestorContainer.nodeType === Node.TEXT_NODE
+                    ? r.commonAncestorContainer.parentElement : r.commonAncestorContainer;
+                const inPassage = document.getElementById('passageArea').contains(p);
+                const inQ = document.getElementById('questionsArea').contains(p);
+                const inInput = p.closest('input,textarea,button,label input,.note-close');
+                return (inPassage || inQ) && !inInput;
             } catch { return false; }
         }
         const contextMenu = document.getElementById('contextMenu');
-        document.addEventListener('contextmenu', function(e) {
-            const selection = window.getSelection();
-            if (!isSelectionValid(selection)) { contextMenu.style.display = 'none'; return; }
+        document.addEventListener('contextmenu', e => {
+            const sel = window.getSelection();
+            if (!isSelectionValid(sel)) { contextMenu.style.display='none'; return; }
             e.preventDefault();
-            currentRange = selection.getRangeAt(0).cloneRange();
-            const rect = currentRange.getBoundingClientRect();
-            contextMenu.style.left = (rect.left + window.scrollX) + 'px';
-            contextMenu.style.top = (rect.bottom + window.scrollY + 5) + 'px';
+            currentRange = sel.getRangeAt(0).cloneRange();
+            const rc = currentRange.getBoundingClientRect();
+            contextMenu.style.left = (rc.left + window.scrollX) + 'px';
+            contextMenu.style.top = (rc.bottom + window.scrollY + 5) + 'px';
             contextMenu.style.display = 'block';
         });
-        document.addEventListener('click', () => contextMenu.style.display = 'none');
-        document.getElementById('menuHighlight').addEventListener('click', function() {
+        document.addEventListener('click', () => contextMenu.style.display='none');
+        document.getElementById('menuHighlight').onclick = () => {
             if (!currentRange) return;
             try {
-                const span = document.createElement('span');
-                span.className = 'highlight';
-                span.textContent = currentRange.toString();
-                currentRange.deleteContents();
-                currentRange.insertNode(span);
-                window.getSelection().removeAllRanges();
-                currentRange = null;
+                const sp = document.createElement('span');
+                sp.className='highlight'; sp.textContent=currentRange.toString();
+                currentRange.deleteContents(); currentRange.insertNode(sp);
+                window.getSelection().removeAllRanges(); currentRange=null;
                 saveHighlights();
-            } catch { alert('Please select a smaller piece of text to highlight.'); }
-        });
-        document.getElementById('menuRemove').addEventListener('click', function() {
+            } catch { alert('Select smaller text.'); }
+        };
+        document.getElementById('menuRemove').onclick = () => {
             if (!currentRange) return;
             try {
-                const startEl = currentRange.startContainer.nodeType === Node.TEXT_NODE 
-                    ? currentRange.startContainer.parentElement : currentRange.startContainer;
-                let target = startEl.closest('.highlight');
-                if (target) {
-                    const parent = target.parentNode;
-                    parent.replaceChild(document.createTextNode(target.textContent), target);
-                    parent.normalize();
-                }
+                const p = (currentRange.startContainer.nodeType===Node.TEXT_NODE
+                    ? currentRange.startContainer.parentElement : currentRange.startContainer)
+                    .closest('.highlight');
+                if (p) { const par=p.parentNode; par.replaceChild(document.createTextNode(p.textContent),p); par.normalize(); }
             } catch {}
-            window.getSelection().removeAllRanges();
-            currentRange = null;
-            saveHighlights();
-        });
-        document.getElementById('menuNote').addEventListener('click', function() {
+            window.getSelection().removeAllRanges(); currentRange=null; saveHighlights();
+        };
+        document.getElementById('menuNote').onclick = () => {
             if (!currentRange) return;
-            const rect = currentRange.getBoundingClientRect();
-            const noteId = 'note_' + (++lastNoteId);
+            const rc = currentRange.getBoundingClientRect();
+            const id = 'note_' + (++lastNoteId);
             const note = document.createElement('div');
-            note.className = 'sticky-note';
-            note.id = noteId;
-            note.innerHTML = `<div class="note-header" onmousedown="startDrag(event, '${noteId}')">Note <span class="note-close" onclick="closeNote('${noteId}')">×</span></div><textarea class="note-textarea" placeholder="Type your note..." oninput="saveNotes()"></textarea>`;
-            note.style.left = (rect.right + window.scrollX + 8) + 'px';
-            note.style.top = (rect.top + window.scrollY) + 'px';
+            note.className='sticky-note'; note.id=id;
+            note.innerHTML = `<div class="note-header" onmousedown="startDrag(event,'${id}')">Note <span class="note-close" onclick="closeNote('${id}')">×</span></div><textarea class="note-textarea" placeholder="Type note..."></textarea>`;
+            note.style.left = (rc.right + window.scrollX + 8) + 'px';
+            note.style.top = (rc.top + window.scrollY) + 'px';
             document.body.appendChild(note);
-            window.getSelection().removeAllRanges();
-            currentRange = null;
-            saveNotes();
+            window.getSelection().removeAllRanges(); currentRange=null; saveNotes();
+        };
+        window.startDrag = function(e,id) {
+            dragNote=document.getElementById(id);
+            const r=dragNote.getBoundingClientRect();
+            dragOffsetX=e.clientX-r.left; dragOffsetY=e.clientY-r.top;
+            dragNote.style.zIndex='10000'; e.preventDefault();
+        };
+        document.addEventListener('mousemove', e=>{
+            if(!dragNote)return;
+            dragNote.style.left=(e.pageX-dragOffsetX)+'px';
+            dragNote.style.top=(e.pageY-dragOffsetY)+'px';
         });
-        function startDrag(e, noteId) {
-            dragNote = document.getElementById(noteId);
-            const rect = dragNote.getBoundingClientRect();
-            dragOffsetX = e.clientX - rect.left;
-            dragOffsetY = e.clientY - rect.top;
-            dragNote.style.zIndex = '10000';
-            e.preventDefault();
-        }
-        document.addEventListener('mousemove', function(e) {
-            if (!dragNote) return;
-            dragNote.style.left = (e.pageX - dragOffsetX) + 'px';
-            dragNote.style.top = (e.pageY - dragOffsetY) + 'px';
+        document.addEventListener('mouseup',()=>{if(dragNote){dragNote.style.zIndex='9998';dragNote=null;saveNotes();}});
+        window.closeNote = id=>{document.getElementById(id)?.remove();saveNotes();};
+        function saveHighlights(){localStorage.setItem(`${STORAGE_KEY}_highlights`,document.getElementById('passageArea').innerHTML);}
+        function loadHighlights(){const h=localStorage.getItem(`${STORAGE_KEY}_highlights`);if(h)document.getElementById('passageArea').innerHTML=h;}
+        function saveNotes(){const a=[];document.querySelectorAll('.sticky-note').forEach(n=>a.push({id:n.id,l:n.style.left,t:n.style.top,x:n.querySelector('.note-textarea').value}));localStorage.setItem(`${STORAGE_KEY}_notes`,JSON.stringify(a));}
+        function loadNotes(){const j=localStorage.getItem(`${STORAGE_KEY}_notes`);if(!j)return;JSON.parse(j).forEach(n=>{const d=document.createElement('div');d.className='sticky-note';d.id=n.id;d.innerHTML=`<div class="note-header" onmousedown="startDrag(event,'${n.id}')">Note <span class="note-close" onclick="closeNote('${n.id}')">×</span></div><textarea class="note-textarea">${n.x}</textarea>`;d.style.left=n.l;d.style.top=n.t;document.body.appendChild(d);const m=parseInt(n.id.split('_')[1]);if(m>lastNoteId)lastNoteId=m;});}
+
+        // === Auto-save on ANY input change ===
+        document.addEventListener('input', e => {
+            if (e.target.matches('.answer-input, .summary-input, input[type=checkbox]')) {
+                saveAnswers();
+            }
+            if (e.target.classList.contains('note-textarea')) saveNotes();
         });
-        document.addEventListener('mouseup', function() {
-            if (dragNote) { dragNote.style.zIndex = '9998'; dragNote = null; saveNotes(); }
-        });
-        function closeNote(id) { document.getElementById(id)?.remove(); saveNotes(); }
-        function saveHighlights() {
-            localStorage.setItem(`${passageId}_passage_highlights`, document.getElementById('passageArea').innerHTML);
-            localStorage.setItem(`${passageId}_questions_highlights`, document.getElementById('questionsArea').innerHTML);
-        }
-        function loadHighlights() {
-            const passHtml = localStorage.getItem(`${passageId}_passage_highlights`);
-            const quesHtml = localStorage.getItem(`${passageId}_questions_highlights`);
-            if (passHtml) document.getElementById('passageArea').innerHTML = passHtml;
-            if (quesHtml) document.getElementById('questionsArea').innerHTML = quesHtml;
-        }
-        function saveNotes() {
-            const notes = Array.from(document.querySelectorAll('.sticky-note')).map(n => ({
-                id: n.id, left: n.style.left, top: n.style.top, text: n.querySelector('.note-textarea').value
-            }));
-            localStorage.setItem(`${passageId}_notes`, JSON.stringify(notes));
-        }
-        function loadNotes() {
-            const saved = localStorage.getItem(`${passageId}_notes`);
-            if (!saved) return;
-            JSON.parse(saved).forEach(n => {
-                const note = document.createElement('div');
-                note.className = 'sticky-note'; note.id = n.id;
-                note.innerHTML = `<div class="note-header" onmousedown="startDrag(event, '${n.id}')">Note <span class="note-close" onclick="closeNote('${n.id}')">×</span></div><textarea class="note-textarea">${n.text}</textarea>`;
-                note.style.left = n.left; note.style.top = n.top;
-                document.body.appendChild(note);
-                const num = parseInt(n.id.split('_')[1]);
-                if (num > lastNoteId) lastNoteId = num;
-            });
-        }
-        function saveAnswers() {
-            // Text inputs Q1–9 — by ID
-            for (let q = 1; q <= 9; q++) {
-                const input = document.getElementById(`input_q${q}`);
-                if (input) {
-                    let val = input.value.trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
-                    if (val === '') {
-                        localStorage.removeItem(`${READING_STORAGE_KEY}_q${q}`);
-                    } else {
-                        localStorage.setItem(`${READING_STORAGE_KEY}_q${q}`, val);
-                    }
-                }
-            }
-            // Checkbox questions Q10-11 and Q12-13
-            const q10vals = [];
-            document.querySelectorAll('input[name="q10"]:checked').forEach(cb => q10vals.push(cb.value));
-            localStorage.setItem(`${READING_STORAGE_KEY}_q10`, q10vals[0] || '');
-            localStorage.setItem(`${READING_STORAGE_KEY}_q11`, q10vals[1] || '');
-            const q12vals = [];
-            document.querySelectorAll('input[name="q12"]:checked').forEach(cb => q12vals.push(cb.value));
-            localStorage.setItem(`${READING_STORAGE_KEY}_q12`, q12vals[0] || '');
-            localStorage.setItem(`${READING_STORAGE_KEY}_q13`, q12vals[1] || '');
-            updateStatus();
-        }
-        function loadAnswers() {
-            // Text inputs Q1–9 — by ID
-            for (let q = 1; q <= 9; q++) {
-                const saved = localStorage.getItem(`${READING_STORAGE_KEY}_q${q}`);
-                if (saved) {
-                    const input = document.getElementById(`input_q${q}`);
-                    if (input) input.value = saved;
-                }
-            }
-            // Load checkboxes
-            const q10a = localStorage.getItem(`${READING_STORAGE_KEY}_q10`);
-            const q10b = localStorage.getItem(`${READING_STORAGE_KEY}_q11`);
-            const q12a = localStorage.getItem(`${READING_STORAGE_KEY}_q12`);
-            const q12b = localStorage.getItem(`${READING_STORAGE_KEY}_q13`);
-            document.querySelectorAll('input[name="q10"]').forEach(cb => {
-                cb.checked = cb.value === q10a || cb.value === q10b;
-            });
-            document.querySelectorAll('input[name="q12"]').forEach(cb => {
-                cb.checked = cb.value === q12a || cb.value === q12b;
-            });
-            updateStatus();
-        }
-        function updateStatus() {
-            for (let q = 1; q <= TOTAL_QUESTIONS; q++) {
-                const statBtn = document.getElementById('stat' + q);
-                if (!statBtn) continue;
-                const val = (localStorage.getItem(`${READING_STORAGE_KEY}_q${q}`) || '').trim();
-                const hasAnswer = val.length > 0;
-                const isFlagged = localStorage.getItem(`${passageId}_flag_${q}`) === 'true';
-                statBtn.classList.remove('answered', 'flagged');
-                if (isFlagged) statBtn.classList.add('flagged');
-                else if (hasAnswer) statBtn.classList.add('answered');
-                const flagIcon = document.getElementById('flag' + q);
-                if (flagIcon) flagIcon.classList.toggle('flagged', isFlagged);
-            }
-        }
-        function clearAllAnswers() {
-            if (!confirm('⚠️ This will clear ALL answers, flags, highlights and notes for this passage. Continue?')) return;
-            document.querySelectorAll('.answer-input, .summary-input').forEach(i => i.value = '');
-            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-            document.querySelectorAll('.flag-btn').forEach(f => f.classList.remove('flagged'));
-            document.querySelectorAll('.highlight').forEach(s => {
-                const p = s.parentNode;
-                p.replaceChild(document.createTextNode(s.textContent), p);
-                p.normalize();
-            });
-            document.querySelectorAll('.sticky-note').forEach(n => n.remove());
-            for (let q = 1; q <= 13; q++) {
-                localStorage.removeItem(`${READING_STORAGE_KEY}_q${q}`);
-                localStorage.removeItem(`${passageId}_flag_${q}`);
-            }
-            localStorage.removeItem(`${passageId}_passage_highlights`);
-            localStorage.removeItem(`${passageId}_questions_highlights`);
-            localStorage.removeItem(`${passageId}_notes`);
-            updateStatus();
-        }
+
+        // === Page Load ===
         window.onload = function() {
             initQuestionNav();
             loadAnswers();
