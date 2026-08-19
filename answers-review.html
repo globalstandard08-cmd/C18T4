@@ -76,7 +76,7 @@
     <div class="container">
         <h1>📋 All Student Answers — Complete Test</h1>
         
-        <div class="status">✅ Auto-loaded from Listening, Reading & Writing — answers stay when navigating between pages</div>
+        <div class="status">✅ Auto-loaded from Listening, Reading & Writing</div>
         
         <!-- LISTENING -->
         <h2>👂 Listening Test — All 4 Parts (Q1–Q40)</h2>
@@ -110,11 +110,11 @@
         </div>
     </div>
 <script>
-// ✅ STORAGE KEYS — MATCHES EXACTLY WHAT YOUR PAGES SAVE
+// ✅ STORAGE KEYS — matches your actual files
 const READING_KEY = 'Reading_Test';
 const LISTENING_KEY = 'Listening_Test';
 
-// ✅ LISTENING LOADER — reads individual keys (Q1–Q40)
+// ✅ LISTENING LOADER
 function loadListeningAnswers(containerId, startQ, endQ) {
     const container = document.getElementById(containerId);
     let html = '';
@@ -130,7 +130,7 @@ function loadListeningAnswers(containerId, startQ, endQ) {
     container.innerHTML = found ? html : '<span class="empty">⚠️ No answers found. Answer a question first.</span>';
 }
 
-// ✅ READING LOADER — works with all 3 passages
+// ✅ READING LOADER — works with ALL your reading pages
 function loadReadingAnswers(containerId, startQ, endQ) {
     const container = document.getElementById(containerId);
     const allAnswers = JSON.parse(localStorage.getItem(READING_KEY) || '{}');
@@ -156,7 +156,7 @@ function loadReadingAnswers(containerId, startQ, endQ) {
     container.innerHTML = found ? html : '<span class="empty">⚠️ No answers found. Answer a question first.</span>';
 }
 
-// ✅ WRITING LOADER — matches your Writing pages' storage keys
+// ✅ WRITING LOADER
 function loadWriting(taskKey, containerId, minWords) {
     const container = document.getElementById(containerId);
     const text = localStorage.getItem(taskKey) || '';
@@ -174,17 +174,17 @@ window.onload = function() {
     // ✅ LISTENING — Q1–Q40
     loadListeningAnswers('listening', 1, 40);
     
-    // ✅ READING — ALL 3 PASSAGES
-    loadReadingAnswers('reading1', 1, 13);
-    loadReadingAnswers('reading2', 14, 26);
-    loadReadingAnswers('reading3', 27, 40);
+    // ✅ READING — ALL 3 PASSAGES (matches your file names)
+    loadReadingAnswers('reading1', 1, 13);      <!-- reading-passage1.html -->
+    loadReadingAnswers('reading2', 14, 26);     <!-- reading-test4-passage2.html -->
+    loadReadingAnswers('reading3', 27, 40);     <!-- reading-test4-passage3.html -->
     
-    // ✅ WRITING — matches storage keys: task1Input / task2Input
+    // ✅ WRITING
     loadWriting('task1Input', 'writingTask1', 150);
     loadWriting('task2Input', 'writingTask2', 250);
 };
 
-// ✅ CLEAR EVERYTHING — Listening + Reading + Writing
+// ✅ CLEAR EVERYTHING
 function clearAllTestAnswers() {
     if (!confirm('⚠️ Are you SURE you want to clear EVERYTHING?\n\nListening (Q1–Q40) + Reading (Q1–Q40) + Writing Task 1 & 2\n\nThis cannot be undone!')) return;
     
