@@ -368,37 +368,36 @@
                         <span class="flag-btn" onclick="toggleFlag(1)" id="flag1">🚩</span>
                         <p><strong>1.</strong> mention of several challenges to be overcome before a green roof can be installed</p>
                     </div>
-                    <input type="text" class="answer-input" name="q1" placeholder="A–E">
+                    <input type="text" class="answer-input" id="input_q1" name="q1" placeholder="A–E" oninput="saveAnswers()">
                 </div>
                 <div class="question-block" id="q2">
                     <div class="question-header">
                         <span class="flag-btn" onclick="toggleFlag(2)" id="flag2">🚩</span>
                         <p><strong>2.</strong> reference to a city where green roofs have been promoted for many years</p>
                     </div>
-                    <input type="text" class="answer-input" name="q2" placeholder="A–E">
+                    <input type="text" class="answer-input" id="input_q2" name="q2" placeholder="A–E" oninput="saveAnswers()">
                 </div>
                 <div class="question-block" id="q3">
                     <div class="question-header">
                         <span class="flag-btn" onclick="toggleFlag(3)" id="flag3">🚩</span>
                         <p><strong>3.</strong> a belief that existing green roofs should be used as a model for new ones</p>
                     </div>
-                    <input type="text" class="answer-input" name="q3" placeholder="A–E">
+                    <input type="text" class="answer-input" id="input_q3" name="q3" placeholder="A–E" oninput="saveAnswers()">
                 </div>
                 <div class="question-block" id="q4">
                     <div class="question-header">
                         <span class="flag-btn" onclick="toggleFlag(4)" id="flag4">🚩</span>
                         <p><strong>4.</strong> examples of how green roofs can work in combination with other green urban initiatives</p>
                     </div>
-                    <input type="text" class="answer-input" name="q4" placeholder="A–E">
+                    <input type="text" class="answer-input" id="input_q4" name="q4" placeholder="A–E" oninput="saveAnswers()">
                 </div>
                 <div class="question-block" id="q5">
                     <div class="question-header">
                         <span class="flag-btn" onclick="toggleFlag(5)" id="flag5">🚩</span>
                         <p><strong>5.</strong> the need to make a persuasive argument for the financial benefits of green roofs</p>
                     </div>
-                    <input type="text" class="answer-input" name="q5" placeholder="A–E">
+                    <input type="text" class="answer-input" id="input_q5" name="q5" placeholder="A–E" oninput="saveAnswers()">
                 </div>
-
                 <h2>Questions 6–9</h2>
                 <div class="instruction">
                     Complete the summary below.<br>
@@ -407,18 +406,17 @@
                 <div class="summary-box">
                     <p>City rooftops covered with greenery have many advantages. These include lessening the likelihood that floods will occur, reducing how much money is spent on
                     <span class="summary-q">6</span>
-                    <input type="text" class="summary-input" name="q6" placeholder="">
+                    <input type="text" class="summary-input" id="input_q6" name="q6" placeholder="" oninput="saveAnswers()">
                     and creating environments that are suitable for wildlife. In many cases, they can also be used for producing
                     <span class="summary-q">7</span>
-                    <input type="text" class="summary-input" name="q7" placeholder="">.</p>
+                    <input type="text" class="summary-input" id="input_q7" name="q7" placeholder="" oninput="saveAnswers()">.</p>
                     <p style="margin-top:12px;">There are also social benefits of green roofs. For example, the medical profession recommends
                     <span class="summary-q">8</span>
-                    <input type="text" class="summary-input" name="q8" placeholder="">
+                    <input type="text" class="summary-input" id="input_q8" name="q8" placeholder="" oninput="saveAnswers()">
                     as an activity to help people cope with mental health issues. Studies have also shown that the availability of green spaces can prevent physical problems such as
                     <span class="summary-q">9</span>
-                    <input type="text" class="summary-input" name="q9" placeholder="">.</p>
+                    <input type="text" class="summary-input" id="input_q9" name="q9" placeholder="" oninput="saveAnswers()">.</p>
                 </div>
-
                 <h2>Questions 10–11</h2>
                 <div class="instruction">
                     Choose <strong>TWO</strong> letters, A–E.<br>
@@ -430,14 +428,13 @@
                         <p><strong>10.</strong></p>
                     </div>
                     <div class="options">
-                        <label><input type="checkbox" name="q10" value="A"> A a longer growing season for edible produce</label>
-                        <label><input type="checkbox" name="q10" value="B"> B more economical use of water</label>
-                        <label><input type="checkbox" name="q10" value="C"> C greater water-storage capacity</label>
-                        <label><input type="checkbox" name="q10" value="D"> D ability to cultivate more plant types</label>
-                        <label><input type="checkbox" name="q10" value="E"> E a larger surface area for growing plants</label>
+                        <label><input type="checkbox" name="q10" value="A" onchange="saveAnswers()"> A a longer growing season for edible produce</label>
+                        <label><input type="checkbox" name="q10" value="B" onchange="saveAnswers()"> B more economical use of water</label>
+                        <label><input type="checkbox" name="q10" value="C" onchange="saveAnswers()"> C greater water-storage capacity</label>
+                        <label><input type="checkbox" name="q10" value="D" onchange="saveAnswers()"> D ability to cultivate more plant types</label>
+                        <label><input type="checkbox" name="q10" value="E" onchange="saveAnswers()"> E a larger surface area for growing plants</label>
                     </div>
                 </div>
-
                 <h2>Questions 12–13</h2>
                 <div class="instruction">
                     Choose <strong>TWO</strong> letters, A–E.<br>
@@ -449,11 +446,11 @@
                         <p><strong>12.</strong></p>
                     </div>
                     <div class="options">
-                        <label><input type="checkbox" name="q12" value="A"> A to provide habitats for a wide range of species</label>
-                        <label><input type="checkbox" name="q12" value="B"> B to grow plants successfully even in the wettest climates</label>
-                        <label><input type="checkbox" name="q12" value="C"> C to regulate the temperature of the immediate environment</label>
-                        <label><input type="checkbox" name="q12" value="D"> D to generate power from a sustainable source</label>
-                        <label><input type="checkbox" name="q12" value="E"> E to collect water to supply other buildings</label>
+                        <label><input type="checkbox" name="q12" value="A" onchange="saveAnswers()"> A to provide habitats for a wide range of species</label>
+                        <label><input type="checkbox" name="q12" value="B" onchange="saveAnswers()"> B to grow plants successfully even in the wettest climates</label>
+                        <label><input type="checkbox" name="q12" value="C" onchange="saveAnswers()"> C to regulate the temperature of the immediate environment</label>
+                        <label><input type="checkbox" name="q12" value="D" onchange="saveAnswers()"> D to generate power from a sustainable source</label>
+                        <label><input type="checkbox" name="q12" value="E" onchange="saveAnswers()"> E to collect water to supply other buildings</label>
                     </div>
                 </div>
             </div>
@@ -476,13 +473,14 @@
     <script>
         const READING_STORAGE_KEY = 'Reading_Test';
         const passageId = 'reading-test4-passage1';
+        const Q_START = 1;
+        const Q_END = 13;
         const TOTAL_QUESTIONS = 40;
         let currentRange = null;
         let lastNoteId = 0;
         let dragNote = null;
         let dragOffsetX = 0;
         let dragOffsetY = 0;
-
         function initQuestionNav() {
             const navContainer = document.getElementById('questionNav');
             for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
@@ -624,28 +622,35 @@
             });
         }
         function saveAnswers() {
+            // Text inputs Q1–9 — by ID
             for (let q = 1; q <= 9; q++) {
-                const input = document.querySelector(`input[name="q${q}"]:not([type="checkbox"])`);
+                const input = document.getElementById(`input_q${q}`);
                 if (input) {
                     let val = input.value.trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
-                    localStorage.setItem(`${READING_STORAGE_KEY}_q${q}`, val);
+                    if (val === '') {
+                        localStorage.removeItem(`${READING_STORAGE_KEY}_q${q}`);
+                    } else {
+                        localStorage.setItem(`${READING_STORAGE_KEY}_q${q}`, val);
+                    }
                 }
             }
-            // Handle checkbox questions Q10-11 and Q12-13
-            const q10vals = [], q12vals = [];
+            // Checkbox questions Q10-11 and Q12-13
+            const q10vals = [];
             document.querySelectorAll('input[name="q10"]:checked').forEach(cb => q10vals.push(cb.value));
-            document.querySelectorAll('input[name="q12"]:checked').forEach(cb => q12vals.push(cb.value));
             localStorage.setItem(`${READING_STORAGE_KEY}_q10`, q10vals[0] || '');
             localStorage.setItem(`${READING_STORAGE_KEY}_q11`, q10vals[1] || '');
+            const q12vals = [];
+            document.querySelectorAll('input[name="q12"]:checked').forEach(cb => q12vals.push(cb.value));
             localStorage.setItem(`${READING_STORAGE_KEY}_q12`, q12vals[0] || '');
             localStorage.setItem(`${READING_STORAGE_KEY}_q13`, q12vals[1] || '');
             updateStatus();
         }
         function loadAnswers() {
+            // Text inputs Q1–9 — by ID
             for (let q = 1; q <= 9; q++) {
                 const saved = localStorage.getItem(`${READING_STORAGE_KEY}_q${q}`);
                 if (saved) {
-                    const input = document.querySelector(`input[name="q${q}"]:not([type="checkbox"])`);
+                    const input = document.getElementById(`input_q${q}`);
                     if (input) input.value = saved;
                 }
             }
@@ -660,6 +665,7 @@
             document.querySelectorAll('input[name="q12"]').forEach(cb => {
                 cb.checked = cb.value === q12a || cb.value === q12b;
             });
+            updateStatus();
         }
         function updateStatus() {
             for (let q = 1; q <= TOTAL_QUESTIONS; q++) {
@@ -695,12 +701,6 @@
             localStorage.removeItem(`${passageId}_notes`);
             updateStatus();
         }
-        document.addEventListener('input', function(e) {
-            if ((e.target.name?.startsWith('q')) || e.target.classList.contains('note-textarea')) {
-                saveAnswers();
-                if (e.target.classList.contains('note-textarea')) saveNotes();
-            }
-        });
         window.onload = function() {
             initQuestionNav();
             loadAnswers();
