@@ -52,15 +52,15 @@
         }
         .split-layout {
             display: flex;
-            min-height: 550px;
+            min-height: 720px; /* ✅ Taller panel = bigger graph */
         }
         .question-panel {
             width: 48%;
-            padding: 20px 25px;
+            padding: 20px 25px 35px; /* ✅ More space at bottom */
             background-color: #fefefe;
             border-right: 1px solid #e2e8f0;
             overflow-y: auto;
-            max-height: calc(100vh - 280px);
+            max-height: calc(100vh - 200px); /* ✅ More vertical room */
         }
         .question-panel h2 {
             font-size: 20px;
@@ -72,7 +72,7 @@
             border: 1px solid #c5d2e3;
             background: #f8fafc;
             padding: 18px;
-            margin: 0 0 20px;
+            margin: 0 0 30px; /* ✅ More space between text and graph */
             font-size: 15px;
             border-radius: 6px;
         }
@@ -80,7 +80,7 @@
             display: block;
             max-width: 100%;
             height: auto;
-            margin: 0 auto;
+            margin: 15px auto 0; /* ✅ Pushes graph DOWN */
             border: 1px solid #e2e8f0;
             border-radius: 4px;
             background: #fff;
@@ -93,7 +93,7 @@
         }
         textarea {
             width: 100%;
-            min-height: 400px;
+            min-height: 520px; /* ✅ Taller writing area to match */
             padding: 18px;
             border: 1px solid #c5d2e3;
             border-radius: 6px;
